@@ -1,6 +1,4 @@
-Here is a suggested structure and content for your **GitHub README** file based on the details you've provided for your Metadata Management System project:
 
----
 
 # Metadata Management System
 
