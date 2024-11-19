@@ -51,7 +51,7 @@ The **Metadata Management System** is built with a layered architecture:
 ### Steps to Install:
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/metadata-management-system.git
+   git clone E:\Coding\ADT MetaData\Picture1.png
    cd metadata-management-system
    ```
 
