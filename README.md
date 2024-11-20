@@ -1,9 +1,9 @@
 
 
-# Metadata Management System
+# DataSet`s MetaData for machine learning 
 
 ## Abstract
-The **Metadata Management System (MMS)** project aims to streamline how researchers and data scientists discover and access scientific datasets by creating an integrated platform that consolidates metadata from multiple sources, such as Kaggle, UCI, and other scientific dataset repositories. Our platform addresses the inefficiencies in current research workflows through standardized metadata, advanced preprocessing, and visualization tools, ultimately reducing the time spent on data discovery.
+This project aims to streamline how researchers and data scientists discover and access scientific datasets by creating an integrated platform that consolidates metadata from multiple sources, such as Kaggle, UCI, and other scientific dataset repositories. Our platform addresses the inefficiencies in current research workflows through standardized metadata, advanced preprocessing, and visualization tools, ultimately reducing the time spent on data discovery.
 
 ## Table of Contents
 1. [Introduction](#introduction)
