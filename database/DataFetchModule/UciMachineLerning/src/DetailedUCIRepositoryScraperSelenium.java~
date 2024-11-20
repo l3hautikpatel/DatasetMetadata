@@ -1,0 +1,135 @@
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+public class DetailedUCIRepositoryScraperSelenium {
+    private static final String BASE_URL = "https://archive.ics.uci.edu/dataset/45/heart+disease";
+    private static WebDriver driver;
+    private static WebDriverWait wait;
+
+    public static void main(String[] args) {
+        System.setProperty("webdriver.chrome.driver", "Driver files/chromedriver-win64/chromedriver.exe");
+        driver = new ChromeDriver();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        try {
+            driver.get(BASE_URL);
+            Map<String, String> datasetInfo = new LinkedHashMap<>();
+
+            extractBasicInfo(datasetInfo);
+            extractDatasetCharacteristics(datasetInfo);
+            extractCreators(datasetInfo);
+            extractDOIAndLicense(datasetInfo);
+            extractDatasetInformation(datasetInfo);
+            extractVariablesTable(datasetInfo);
+            extractAdditionalVariableInfo(datasetInfo);
+            extractDatasetFiles(datasetInfo);
+            extractCitationsViewsReviews(datasetInfo);
+
+            // Print all extracted information
+            datasetInfo.forEach((key, value) -> System.out.println(key + " : " + value));
+
+        } finally {
+            driver.quit();
+        }
+    }
+
+    private static void extractBasicInfo(Map<String, String> datasetInfo) {
+        datasetInfo.put("Name", driver.findElement(By.cssSelector("h1.text-3xl")).getText());
+        datasetInfo.put("Donated on", driver.findElement(By.cssSelector("h2.text-sm")).getText().replace("Donated on ", ""));
+        datasetInfo.put("Abstract", driver.findElement(By.cssSelector("p[style*=clamp]")).getText());
+    }
+
+    private static void extractDatasetCharacteristics(Map<String, String> datasetInfo) {
+        List<WebElement> characteristics = driver.findElements(By.cssSelector("div.col-span-4"));
+        for (WebElement characteristic : characteristics) {
+            String key = characteristic.findElement(By.cssSelector("h1.text-lg")).getText();
+            String value = characteristic.findElement(By.cssSelector("p.text-md")).getText();
+            datasetInfo.put(key, value);
+        }
+    }
+
+    private static void extractCreators(Map<String, String> datasetInfo) {
+        List<WebElement> creators = driver.findElements(By.cssSelector("div:contains(Creators) + div p"));
+        String creatorsText = creators.stream().map(WebElement::getText).reduce((a, b) -> a + ", " + b).orElse("");
+        datasetInfo.put("Creators", creatorsText);
+    }
+
+    private static void extractDOIAndLicense(Map<String, String> datasetInfo) {
+        datasetInfo.put("DOI", driver.findElement(By.cssSelector("a[href*=doi.org]")).getText());
+        datasetInfo.put("License", driver.findElement(By.cssSelector("div:contains(License) + div")).getText());
+    }
+
+    private static void extractDatasetInformation(Map<String, String> datasetInfo) {
+        WebElement showMoreButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(., 'Show More')]")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", showMoreButton);
+
+        WebElement datasetInfoElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(@class, 'whitespace-pre-wrap')]")));
+        datasetInfo.put("Dataset Information", datasetInfoElement.getText());
+    }
+
+    private static void extractVariablesTable(Map<String, String> datasetInfo) {
+        StringBuilder tableContent = new StringBuilder();
+        List<WebElement> rows = driver.findElements(By.cssSelector("table tr"));
+        for (WebElement row : rows) {
+            List<WebElement> cells = row.findElements(By.cssSelector("th, td"));
+            String rowContent = cells.stream().map(WebElement::getText).reduce((a, b) -> a + "\t" + b).orElse("");
+            tableContent.append(rowContent).append("\n");
+        }
+        datasetInfo.put("Variables Table", tableContent.toString());
+
+        // Handle pagination if necessary
+        WebElement nextPageButton = driver.findElement(By.cssSelector("button[aria-label='Next Page']"));
+        while (!nextPageButton.getAttribute("disabled").equals("true")) {
+            nextPageButton.click();
+            wait.until(ExpectedConditions.stalenessOf(rows.get(0)));
+            rows = driver.findElements(By.cssSelector("table tr"));
+            for (WebElement row : rows.subList(1, rows.size())) { // Skip header row
+                List<WebElement> cells = row.findElements(By.cssSelector("td"));
+                String rowContent = cells.stream().map(WebElement::getText).reduce((a, b) -> a + "\t" + b).orElse("");
+                tableContent.append(rowContent).append("\n");
+            }
+            nextPageButton = driver.findElement(By.cssSelector("button[aria-label='Next Page']"));
+        }
+    }
+
+    private static void extractAdditionalVariableInfo(Map<String, String> datasetInfo) {
+        WebElement showMoreButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(., 'Show More')]")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", showMoreButton);
+
+        WebElement additionalInfoElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[contains(@class, 'whitespace-pre-wrap')]")));
+        datasetInfo.put("Additional Variable Information", additionalInfoElement.getText());
+    }
+
+    private static void extractDatasetFiles(Map<String, String> datasetInfo) {
+        StringBuilder filesInfo = new StringBuilder();
+        List<WebElement> rows = driver.findElements(By.cssSelector("table:contains(File) tr"));
+        for (WebElement row : rows.subList(1, rows.size())) { // Skip header row
+            List<WebElement> cells = row.findElements(By.cssSelector("td"));
+            if (cells.size() >= 2) {
+                filesInfo.append(cells.get(0).getText()).append(" (").append(cells.get(1).getText()).append(")\n");
+            }
+        }
+        datasetInfo.put("Dataset Files", filesInfo.toString());
+    }
+
+    private static void extractCitationsViewsReviews(Map<String, String> datasetInfo) {
+        String citations = driver.findElement(By.xpath("//div[contains(@class, 'flex') and .//svg[contains(@class, 'text-primary')]]//span[contains(@class, 'font-semibold')]")).getText().replaceAll("\\D+", "");
+        datasetInfo.put("Citations", citations);
+
+        String views = driver.findElement(By.xpath("//div[contains(@class, 'flex') and .//svg[contains(@class, 'text-primary')]]//span[contains(@class, 'font-semibold')]")).getText().replaceAll("\\D+", "");
+        datasetInfo.put("Views", views);
+
+        String reviews = driver.findElement(By.xpath("//div[contains(text(), 'Reviews')]//span[contains(@class, 'font-semibold')]")).getText().replaceAll("\\D+", "");
+        datasetInfo.put("Reviews", reviews);
+    }
+}

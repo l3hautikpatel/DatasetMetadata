@@ -1,0 +1,15 @@
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
+
+public class MongoTest {
+    public static void main(String[] args) {
+        // Replace the placeholder with your MongoDB connection string
+        String uri = "mongodb://localhost:27017"; //mongodb://localhost:27017/
+
+        try (MongoClient mongoClient = MongoClients.create(uri)) {
+            MongoDatabase database = mongoClient.getDatabase("bhautik_patel");
+            System.out.println("Connected to MongoDB database: " + database.getName());
+        }
+    }
+}

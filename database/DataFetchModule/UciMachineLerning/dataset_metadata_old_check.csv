@@ -1,0 +1,886 @@
+UCIrepoId,Timestamp,Name,DonatedDate,AbstractInfo,DatasetCharacteristics,SubjectArea,AssociatedTasks,FeatureType,Instances,Features,DatasetInformation,HasMissingValues,IntroductoryPapers,VariablesTable,AdditionalVariableInfo,Creators,DOI,License,DatasetFiles,Keywords,Citations,Views
+45,28-10-2024 15:23,Heart Disease,6/30/1988,"4 databases: Cleveland, Hungary, Switzerland, and the VA Long Beach",Multivariate,Health and Medicine,Classification,"Categorical, Integer, Real",303,13,"This database contains 76 attributes, but all published experiments refer to using a subset of 14 of them.  In particular, the Cleveland database is the only one that has been used by ML researchers to date.  The ""goal"" field refers to the presence of heart disease in the patient.  It is integer valued from 0 (no presence) to 4. Experiments with the Cleveland database have concentrated on simply attempting to distinguish presence (values 1,2,3,4) from absence (value 0).  
+   
+The names and social security numbers of the patients were recently removed from the database, replaced with dummy values.
+
+One file has been ""processed"", that one containing the Cleveland database.  All four unprocessed files also exist in this directory.
+
+To see Test Costs (donated by Peter Turney), please see the folder ""Costs"" ",Yes ,"International application of a new probability algorithm for the diagnosis of coronary artery disease.
+By R. Detrano, A. Jánosi, W. Steinbrunn, M. Pfisterer, J. Schmid, S. Sandhu, K. Guppy, S. Lee, V. Froelicher. 1989
+Published in American Journal of Cardiology",Variable Name;Role;Type;Demographic;Description;Units;Missing Values|age;Feature;Integer;Age;;years;no|sex;Feature;Categorical;Sex;;;no|cp;Feature;Categorical;;;;no|trestbps;Feature;Integer;;resting blood pressure (on admission to the hospital);mm Hg;no|chol;Feature;Integer;;serum cholestoral;mg/dl;no|fbs;Feature;Categorical;;fasting blood sugar > 120 mg/dl;;no|restecg;Feature;Categorical;;;;no|thalach;Feature;Integer;;maximum heart rate achieved;;no|exang;Feature;Categorical;;exercise induced angina;;no|oldpeak;Feature;Integer;;ST depression induced by exercise relative to rest;;no|slope;Feature;Categorical;;;;no|ca;Feature;Integer;;number of major vessels (0-3) colored by flourosopy;;yes|thal;Feature;Categorical;;;;yes|num;Target;Integer;;diagnosis of heart disease;;no,"Only 14 attributes used:
+      1. #3  (age)       
+      2. #4  (sex)       
+      3. #9  (cp)        
+      4. #10 (trestbps)  
+      5. #12 (chol)      
+      6. #16 (fbs)       
+      7. #19 (restecg)   
+      8. #32 (thalach)   
+      9. #38 (exang)     
+      10. #40 (oldpeak)   
+      11. #41 (slope)     
+      12. #44 (ca)        
+      13. #51 (thal)      
+      14. #58 (num)       (the predicted attribute)
+
+Complete attribute documentation:
+      1 id: patient identification number
+      2 ccf: social security number (I replaced this with a dummy value of 0)
+      3 age: age in years
+      4 sex: sex (1 = male; 0 = female)
+      5 painloc: chest pain location (1 = substernal; 0 = otherwise)
+      6 painexer (1 = provoked by exertion; 0 = otherwise)
+      7 relrest (1 = relieved after rest; 0 = otherwise)
+      8 pncaden (sum of 5, 6, and 7)
+      9 cp: chest pain type
+        -- Value 1: typical angina
+        -- Value 2: atypical angina
+        -- Value 3: non-anginal pain
+        -- Value 4: asymptomatic
+     10 trestbps: resting blood pressure (in mm Hg on admission to the hospital)
+     11 htn
+     12 chol: serum cholestoral in mg/dl
+     13 smoke: I believe this is 1 = yes; 0 = no (is or is not a smoker)
+     14 cigs (cigarettes per day)
+     15 years (number of years as a smoker)
+     16 fbs: (fasting blood sugar > 120 mg/dl)  (1 = true; 0 = false)
+     17 dm (1 = history of diabetes; 0 = no such history)
+     18 famhist: family history of coronary artery disease (1 = yes; 0 = no)
+     19 restecg: resting electrocardiographic results
+        -- Value 0: normal
+        -- Value 1: having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV)
+        -- Value 2: showing probable or definite left ventricular hypertrophy by Estes' criteria
+     20 ekgmo (month of exercise ECG reading)
+     21 ekgday(day of exercise ECG reading)
+     22 ekgyr (year of exercise ECG reading)
+     23 dig (digitalis used furing exercise ECG: 1 = yes; 0 = no)
+     24 prop (Beta blocker used during exercise ECG: 1 = yes; 0 = no)
+     25 nitr (nitrates used during exercise ECG: 1 = yes; 0 = no)
+     26 pro (calcium channel blocker used during exercise ECG: 1 = yes; 0 = no)
+     27 diuretic (diuretic used used during exercise ECG: 1 = yes; 0 = no)
+     28 proto: exercise protocol
+          1 = Bruce     
+          2 = Kottus
+          3 = McHenry
+          4 = fast Balke
+          5 = Balke
+          6 = Noughton 
+          7 = bike 150 kpa min/min  (Not sure if ""kpa min/min"" is what was written!)
+          8 = bike 125 kpa min/min  
+          9 = bike 100 kpa min/min
+         10 = bike 75 kpa min/min
+         11 = bike 50 kpa min/min
+         12 = arm ergometer
+     29 thaldur: duration of exercise test in minutes
+     30 thaltime: time when ST measure depression was noted
+     31 met: mets achieved
+     32 thalach: maximum heart rate achieved
+     33 thalrest: resting heart rate
+     34 tpeakbps: peak exercise blood pressure (first of 2 parts)
+     35 tpeakbpd: peak exercise blood pressure (second of 2 parts)
+     36 dummy
+     37 trestbpd: resting blood pressure
+     38 exang: exercise induced angina (1 = yes; 0 = no)
+     39 xhypo: (1 = yes; 0 = no)
+     40 oldpeak = ST depression induced by exercise relative to rest
+     41 slope: the slope of the peak exercise ST segment
+        -- Value 1: upsloping
+        -- Value 2: flat
+        -- Value 3: downsloping
+     42 rldv5: height at rest
+     43 rldv5e: height at peak exercise
+     44 ca: number of major vessels (0-3) colored by flourosopy
+     45 restckm: irrelevant
+     46 exerckm: irrelevant
+     47 restef: rest raidonuclid (sp?) ejection fraction
+     48 restwm: rest wall (sp?) motion abnormality
+        0 = none
+        1 = mild or moderate
+        2 = moderate or severe
+        3 = akinesis or dyskmem (sp?)
+     49 exeref: exercise radinalid (sp?) ejection fraction
+     50 exerwm: exercise wall (sp?) motion 
+     51 thal: 3 = normal; 6 = fixed defect; 7 = reversable defect
+     52 thalsev: not used
+     53 thalpul: not used
+     54 earlobe: not used
+     55 cmo: month of cardiac cath (sp?)  (perhaps ""call"")
+     56 cday: day of cardiac cath (sp?)
+     57 cyr: year of cardiac cath (sp?)
+     58 num: diagnosis of heart disease (angiographic disease status)
+        -- Value 0: < 50% diameter narrowing
+        -- Value 1: > 50% diameter narrowing
+        (in any major vessel: attributes 59 through 68 are vessels)
+     59 lmt
+     60 ladprox
+     61 laddist
+     62 diag
+     63 cxmain
+     64 ramus
+     65 om1
+     66 om2
+     67 rcaprox
+     68 rcadist
+     69 lvx1: not used
+     70 lvx2: not used
+     71 lvx3: not used
+     72 lvx4: not used
+     73 lvf: not used
+     74 cathef: not used
+     75 junk: not used
+     76 name: last name of patient  (I replaced this with the dummy string ""name"")","Andras Janosi
+William Steinbrunn
+Matthias Pfisterer
+Robert Detrano",10.24432/C52P4X Link: https://doi.org/10.24432/C52P4X,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",File;Size|new.data;380.6 KB|hungarian.data;60.7 KB|cleveland.data;59.2 KB|long-beach-va.data;39 KB|switzerland.data;24.1 KB|cleve.mod;23.4 KB|processed.cleveland.data;18 KB|reprocessed.hungarian.data;10.8 KB|processed.hungarian.data;10 KB|heart-disease.names;9.8 KB|bak;6.6 KB|processed.va.data;6.6 KB|processed.switzerland.data;4 KB|costs/heart-disease.README;2.5 KB|Index;644 Bytes|ask-detrano;587 Bytes|WARNING;407 Bytes|costs/heart-disease.expense;279 Bytes|costs/Index;250 Bytes|costs/heart-disease.delay;234 Bytes|costs/heart-disease.cost;185 Bytes|costs/heart-disease.group;94 Bytes,health,64 citations,506307 views
+53,28-10-2024 15:26,Iris,6/30/1988,"A small classic dataset from Fisher, 1936. One of the earliest known datasets used for evaluating classification methods.",Tabular,Biology,Classification,Real,150,4,Each instance is a plant,"This is one of the earliest datasets used in the literature on classification methods and widely used in statistics and machine learning.  The data set contains 3 classes of 50 instances each, where each class refers to a type of iris plant.  One class is linearly separable from the other 2; the latter are not linearly separable from each other.
+
+Predicted attribute: class of iris plant.
+
+This is an exceedingly simple domain.
+
+This data differs from the data presented in Fishers article (identified by Steve Chadwick,  spchadwick@espeedaz.net ).  The 35th sample should be: 4.9,3.1,1.5,0.2,""Iris-setosa"" where the error is in the fourth feature. The 38th sample: 4.9,3.6,1.4,0.1,""Iris-setosa"" where the errors are in the second and third features.  ","The Iris data set: In search of the source of virginica
+By A. Unwin, K. Kleinman. 2021
+Published in Significance, 2021","Variable Name;Role;Type;Description;Units;Missing Values|sepal length;Feature;Continuous;;cm;no|sepal width;Feature;Continuous;;cm;no|petal length;Feature;Continuous;;cm;no|petal width;Feature;Continuous;;cm;no|class;Target;Categorical;class of iris plant: Iris Setosa, Iris Versicolour, or Iris Virginica;;no",,R. A. Fisher,10.24432/C56C76 Link: https://doi.org/10.24432/C56C76,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",,ecology,352 citations,680532 views
+45,28-10-2024 15:26,Heart Disease,6/30/1988,"4 databases: Cleveland, Hungary, Switzerland, and the VA Long Beach",Multivariate,Health and Medicine,Classification,"Categorical, Integer, Real",303,13,"This database contains 76 attributes, but all published experiments refer to using a subset of 14 of them.  In particular, the Cleveland database is the only one that has been used by ML researchers to date.  The ""goal"" field refers to the presence of heart disease in the patient.  It is integer valued from 0 (no presence) to 4. Experiments with the Cleveland database have concentrated on simply attempting to distinguish presence (values 1,2,3,4) from absence (value 0).  
+   
+The names and social security numbers of the patients were recently removed from the database, replaced with dummy values.
+
+One file has been ""processed"", that one containing the Cleveland database.  All four unprocessed files also exist in this directory.
+
+To see Test Costs (donated by Peter Turney), please see the folder ""Costs"" ",Yes ,"International application of a new probability algorithm for the diagnosis of coronary artery disease.
+By R. Detrano, A. Jánosi, W. Steinbrunn, M. Pfisterer, J. Schmid, S. Sandhu, K. Guppy, S. Lee, V. Froelicher. 1989
+Published in American Journal of Cardiology",Variable Name;Role;Type;Demographic;Description;Units;Missing Values|age;Feature;Integer;Age;;years;no|sex;Feature;Categorical;Sex;;;no|cp;Feature;Categorical;;;;no|trestbps;Feature;Integer;;resting blood pressure (on admission to the hospital);mm Hg;no|chol;Feature;Integer;;serum cholestoral;mg/dl;no|fbs;Feature;Categorical;;fasting blood sugar > 120 mg/dl;;no|restecg;Feature;Categorical;;;;no|thalach;Feature;Integer;;maximum heart rate achieved;;no|exang;Feature;Categorical;;exercise induced angina;;no|oldpeak;Feature;Integer;;ST depression induced by exercise relative to rest;;no|slope;Feature;Categorical;;;;no|ca;Feature;Integer;;number of major vessels (0-3) colored by flourosopy;;yes|thal;Feature;Categorical;;;;yes|num;Target;Integer;;diagnosis of heart disease;;no,"Only 14 attributes used:
+      1. #3  (age)       
+      2. #4  (sex)       
+      3. #9  (cp)        
+      4. #10 (trestbps)  
+      5. #12 (chol)      
+      6. #16 (fbs)       
+      7. #19 (restecg)   
+      8. #32 (thalach)   
+      9. #38 (exang)     
+      10. #40 (oldpeak)   
+      11. #41 (slope)     
+      12. #44 (ca)        
+      13. #51 (thal)      
+      14. #58 (num)       (the predicted attribute)
+
+Complete attribute documentation:
+      1 id: patient identification number
+      2 ccf: social security number (I replaced this with a dummy value of 0)
+      3 age: age in years
+      4 sex: sex (1 = male; 0 = female)
+      5 painloc: chest pain location (1 = substernal; 0 = otherwise)
+      6 painexer (1 = provoked by exertion; 0 = otherwise)
+      7 relrest (1 = relieved after rest; 0 = otherwise)
+      8 pncaden (sum of 5, 6, and 7)
+      9 cp: chest pain type
+        -- Value 1: typical angina
+        -- Value 2: atypical angina
+        -- Value 3: non-anginal pain
+        -- Value 4: asymptomatic
+     10 trestbps: resting blood pressure (in mm Hg on admission to the hospital)
+     11 htn
+     12 chol: serum cholestoral in mg/dl
+     13 smoke: I believe this is 1 = yes; 0 = no (is or is not a smoker)
+     14 cigs (cigarettes per day)
+     15 years (number of years as a smoker)
+     16 fbs: (fasting blood sugar > 120 mg/dl)  (1 = true; 0 = false)
+     17 dm (1 = history of diabetes; 0 = no such history)
+     18 famhist: family history of coronary artery disease (1 = yes; 0 = no)
+     19 restecg: resting electrocardiographic results
+        -- Value 0: normal
+        -- Value 1: having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV)
+        -- Value 2: showing probable or definite left ventricular hypertrophy by Estes' criteria
+     20 ekgmo (month of exercise ECG reading)
+     21 ekgday(day of exercise ECG reading)
+     22 ekgyr (year of exercise ECG reading)
+     23 dig (digitalis used furing exercise ECG: 1 = yes; 0 = no)
+     24 prop (Beta blocker used during exercise ECG: 1 = yes; 0 = no)
+     25 nitr (nitrates used during exercise ECG: 1 = yes; 0 = no)
+     26 pro (calcium channel blocker used during exercise ECG: 1 = yes; 0 = no)
+     27 diuretic (diuretic used used during exercise ECG: 1 = yes; 0 = no)
+     28 proto: exercise protocol
+          1 = Bruce     
+          2 = Kottus
+          3 = McHenry
+          4 = fast Balke
+          5 = Balke
+          6 = Noughton 
+          7 = bike 150 kpa min/min  (Not sure if ""kpa min/min"" is what was written!)
+          8 = bike 125 kpa min/min  
+          9 = bike 100 kpa min/min
+         10 = bike 75 kpa min/min
+         11 = bike 50 kpa min/min
+         12 = arm ergometer
+     29 thaldur: duration of exercise test in minutes
+     30 thaltime: time when ST measure depression was noted
+     31 met: mets achieved
+     32 thalach: maximum heart rate achieved
+     33 thalrest: resting heart rate
+     34 tpeakbps: peak exercise blood pressure (first of 2 parts)
+     35 tpeakbpd: peak exercise blood pressure (second of 2 parts)
+     36 dummy
+     37 trestbpd: resting blood pressure
+     38 exang: exercise induced angina (1 = yes; 0 = no)
+     39 xhypo: (1 = yes; 0 = no)
+     40 oldpeak = ST depression induced by exercise relative to rest
+     41 slope: the slope of the peak exercise ST segment
+        -- Value 1: upsloping
+        -- Value 2: flat
+        -- Value 3: downsloping
+     42 rldv5: height at rest
+     43 rldv5e: height at peak exercise
+     44 ca: number of major vessels (0-3) colored by flourosopy
+     45 restckm: irrelevant
+     46 exerckm: irrelevant
+     47 restef: rest raidonuclid (sp?) ejection fraction
+     48 restwm: rest wall (sp?) motion abnormality
+        0 = none
+        1 = mild or moderate
+        2 = moderate or severe
+        3 = akinesis or dyskmem (sp?)
+     49 exeref: exercise radinalid (sp?) ejection fraction
+     50 exerwm: exercise wall (sp?) motion 
+     51 thal: 3 = normal; 6 = fixed defect; 7 = reversable defect
+     52 thalsev: not used
+     53 thalpul: not used
+     54 earlobe: not used
+     55 cmo: month of cardiac cath (sp?)  (perhaps ""call"")
+     56 cday: day of cardiac cath (sp?)
+     57 cyr: year of cardiac cath (sp?)
+     58 num: diagnosis of heart disease (angiographic disease status)
+        -- Value 0: < 50% diameter narrowing
+        -- Value 1: > 50% diameter narrowing
+        (in any major vessel: attributes 59 through 68 are vessels)
+     59 lmt
+     60 ladprox
+     61 laddist
+     62 diag
+     63 cxmain
+     64 ramus
+     65 om1
+     66 om2
+     67 rcaprox
+     68 rcadist
+     69 lvx1: not used
+     70 lvx2: not used
+     71 lvx3: not used
+     72 lvx4: not used
+     73 lvf: not used
+     74 cathef: not used
+     75 junk: not used
+     76 name: last name of patient  (I replaced this with the dummy string ""name"")","Andras Janosi
+William Steinbrunn
+Matthias Pfisterer
+Robert Detrano",10.24432/C52P4X Link: https://doi.org/10.24432/C52P4X,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",File;Size|new.data;380.6 KB|hungarian.data;60.7 KB|cleveland.data;59.2 KB|long-beach-va.data;39 KB|switzerland.data;24.1 KB|cleve.mod;23.4 KB|processed.cleveland.data;18 KB|reprocessed.hungarian.data;10.8 KB|processed.hungarian.data;10 KB|heart-disease.names;9.8 KB|bak;6.6 KB|processed.va.data;6.6 KB|processed.switzerland.data;4 KB|costs/heart-disease.README;2.5 KB|Index;644 Bytes|ask-detrano;587 Bytes|WARNING;407 Bytes|costs/heart-disease.expense;279 Bytes|costs/Index;250 Bytes|costs/heart-disease.delay;234 Bytes|costs/heart-disease.cost;185 Bytes|costs/heart-disease.group;94 Bytes,health,64 citations,506307 views
+186,28-10-2024 15:26,Wine Quality,10-06-2009,"Two datasets are included, related to red and white vinho verde wine samples, from the north of Portugal. The goal is to model wine quality based on physicochemical tests (see [Cortez et al., 2009], http://www3.dsi.uminho.pt/pcortez/wine/).",Multivariate,Business,"Classification, Regression",Real,4898,11,"The two datasets are related to red and white variants of the Portuguese ""Vinho Verde"" wine. For more details, consult: http://www.vinhoverde.pt/en/ or the reference [Cortez et al., 2009].  Due to privacy and logistic issues, only physicochemical (inputs) and sensory (the output) variables are available (e.g. there is no data about grape types, wine brand, wine selling price, etc.).
+
+These datasets can be viewed as classification or regression tasks.  The classes are ordered and not balanced (e.g. there are many more normal wines than excellent or poor ones). Outlier detection algorithms could be used to detect the few excellent or poor wines. Also, we are not sure if all input variables are relevant. So it could be interesting to test feature selection methods.",No,"Modeling wine preferences by data mining from physicochemical properties
+By P. Cortez, A. Cerdeira, Fernando Almeida, Telmo Matos, J. Reis. 2009
+Published in Decision Support Systems",Variable Name;Role;Type;Description;Units;Missing Values|fixed_acidity;Feature;Continuous;;;no|volatile_acidity;Feature;Continuous;;;no|citric_acid;Feature;Continuous;;;no|residual_sugar;Feature;Continuous;;;no|chlorides;Feature;Continuous;;;no|free_sulfur_dioxide;Feature;Continuous;;;no|total_sulfur_dioxide;Feature;Continuous;;;no|density;Feature;Continuous;;;no|pH;Feature;Continuous;;;no|sulphates;Feature;Continuous;;;no|alcohol;Feature;Continuous;;;no|quality;Target;Integer;score between 0 and 10;;no|color;Other;Categorical;red or white;;no,"For more information, read [Cortez et al., 2009].
+Input variables (based on physicochemical tests):
+   1 - fixed acidity
+   2 - volatile acidity
+   3 - citric acid
+   4 - residual sugar
+   5 - chlorides
+   6 - free sulfur dioxide
+   7 - total sulfur dioxide
+   8 - density
+   9 - pH
+   10 - sulphates
+   11 - alcohol
+Output variable (based on sensory data): 
+   12 - quality (score between 0 and 10)","Paulo Cortez
+A. Cerdeira
+F. Almeida
+T. Matos
+J. Reis",10.24432/C56S3T Link: https://doi.org/10.24432/C56S3T,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",,Chemistry,1 citations,338666 views
+2,28-10-2024 15:26,Adult,4/30/1996,Predict whether annual income of an individual exceeds $50K/yr based on census data. Also known as "Census Income" dataset.,Multivariate,Social Science,Classification,"Categorical, Integer",48842,14,"Extraction was done by Barry Becker from the 1994 Census database.  A set of reasonably clean records was extracted using the following conditions: ((AAGE>16) && (AGI>100) && (AFNLWGT>1)&& (HRSWK>0))
+
+Prediction task is to determine whether a person's income is over $50,000 a year.",Yes ,"Variable Name Role Type Demographic Description Units Missing Values
+capital-gain Feature Integer no
+capital-loss Feature Integer no
+hours-per-week Feature Integer no
+native-country Feature Categorical Other United-States, Cambodia, England, Puerto-Rico, Canada, Germany, Outlying-US(Guam-USVI-etc), India, Japan, Greece, South, China, Cuba, Iran, Honduras, Philippines, Italy, Poland, Jamaica, Vietnam, Mexico, Portugal, Ireland, France, Dominican-Republic, Laos, Ecuador, Taiwan, Haiti, Columbia, Hungary, Guatemala, Nicaragua, Scotland, Thailand, Yugoslavia, El-Salvador, Trinadad&Tobago, Peru, Hong, Holand-Netherlands. yes
+income Target Binary Income >50K, <=50K. no
+Rows per page
+5
+10
+15
+20
+25
+10 to 15 of 15",,,"Barry Becker
+Silicon Graphics
+Ronny Kohavi
+ronnyk@live.com
+Consultant/Stanford",10.24432/C5XW20 Link: https://doi.org/10.24432/C5XW20,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",,census,257 citations,315319 views
+17,28-10-2024 15:26,Breast Cancer Wisconsin (Diagnostic),10/31/1995,Diagnostic Wisconsin Breast Cancer Database.,Multivariate,Health and Medicine,Classification,Real,569,30,"Features are computed from a digitized image of a fine needle aspirate (FNA) of a breast mass.  They describe characteristics of the cell nuclei present in the image. A few of the images can be found at http://www.cs.wisc.edu/~street/images/
+
+Separating plane described above was obtained using Multisurface Method-Tree (MSM-T) [K. P. Bennett, ""Decision Tree Construction Via Linear Programming."" Proceedings of the 4th Midwest Artificial Intelligence and Cognitive Science Society, pp. 97-101, 1992], a classification method which uses linear programming to construct a decision tree.  Relevant features were selected using an exhaustive search in the space of 1-4 features and 1-3 separating planes.
+
+The actual linear program used to obtain the separating plane in the 3-dimensional space is that described in: [K. P. Bennett and O. L. Mangasarian: ""Robust Linear Programming Discrimination of Two Linearly Inseparable Sets"", Optimization Methods and Software 1, 1992, 23-34].
+
+This database is also available through the UW CS ftp server:
+ftp ftp.cs.wisc.edu
+cd math-prog/cpo-dataset/machine-learn/WDBC/",No,"Nuclear feature extraction for breast tumor diagnosis
+By W. Street, W. Wolberg, O. Mangasarian. 1993
+Published in Electronic imaging",Variable Name;Role;Type;Description;Units;Missing Values|ID;ID;Categorical;;;no|Diagnosis;Target;Categorical;;;no|radius1;Feature;Continuous;;;no|texture1;Feature;Continuous;;;no|perimeter1;Feature;Continuous;;;no|area1;Feature;Continuous;;;no|smoothness1;Feature;Continuous;;;no|compactness1;Feature;Continuous;;;no|concavity1;Feature;Continuous;;;no|concave_points1;Feature;Continuous;;;no|symmetry1;Feature;Continuous;;;no|fractal_dimension1;Feature;Continuous;;;no|radius2;Feature;Continuous;;;no|texture2;Feature;Continuous;;;no|perimeter2;Feature;Continuous;;;no|area2;Feature;Continuous;;;no|smoothness2;Feature;Continuous;;;no|compactness2;Feature;Continuous;;;no|concavity2;Feature;Continuous;;;no|concave_points2;Feature;Continuous;;;no|symmetry2;Feature;Continuous;;;no|fractal_dimension2;Feature;Continuous;;;no|radius3;Feature;Continuous;;;no|texture3;Feature;Continuous;;;no|perimeter3;Feature;Continuous;;;no|area3;Feature;Continuous;;;no|smoothness3;Feature;Continuous;;;no|compactness3;Feature;Continuous;;;no|concavity3;Feature;Continuous;;;no|concave_points3;Feature;Continuous;;;no|symmetry3;Feature;Continuous;;;no|fractal_dimension3;Feature;Continuous;;;no,"1) ID number
+2) Diagnosis (M = malignant, B = benign)
+3-32)
+
+Ten real-valued features are computed for each cell nucleus:
+
+ a) radius (mean of distances from center to points on the perimeter)
+ b) texture (standard deviation of gray-scale values)
+ c) perimeter
+ d) area
+ e) smoothness (local variation in radius lengths)
+ f) compactness (perimeter^2 / area - 1.0)
+ g) concavity (severity of concave portions of the contour)
+ h) concave points (number of concave portions of the contour)
+ i) symmetry 
+ j) fractal dimension (""coastline approximation"" - 1)","William Wolberg
+Olvi Mangasarian
+Nick Street
+W. Street",10.24432/C5DW2B Link: https://doi.org/10.24432/C5DW2B,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",File;Size|wdbc.data;121.2 KB|wdbc.names;4.6 KB,health,37 citations,304881 views
+222,28-10-2024 15:26,Bank Marketing,2/13/2012,The data is related with direct marketing campaigns (phone calls) of a Portuguese banking institution. The classification goal is to predict if the client will subscribe a term deposit (variable y).,Multivariate,Business,Classification,"Categorical, Integer",45211,16,"The data is related with direct marketing campaigns of a Portuguese banking institution. The marketing campaigns were based on phone calls. Often, more than one contact to the same client was required, in order to access if the product (bank term deposit) would be ('yes') or not ('no') subscribed. 
+
+There are four datasets: 
+1) bank-additional-full.csv with all examples (41188) and 20 inputs, ordered by date (from May 2008 to November 2010), very close to the data analyzed in [Moro et al., 2014]
+2) bank-additional.csv with 10% of the examples (4119), randomly selected from 1), and 20 inputs.
+3) bank-full.csv with all examples and 17 inputs, ordered by date (older version of this dataset with less inputs). 
+4) bank.csv with 10% of the examples and 17 inputs, randomly selected from 3 (older version of this dataset with less inputs). 
+The smallest datasets are provided to test more computationally demanding machine learning algorithms (e.g., SVM). 
+
+The classification goal is to predict if the client will subscribe (yes/no) a term deposit (variable y).",No,"A data-driven approach to predict the success of bank telemarketing
+By Sérgio Moro, P. Cortez, P. Rita. 2014
+Published in Decision Support Systems","Variable Name;Role;Type;Demographic;Description;Units;Missing Values|age;Feature;Integer;Age;;;no|job;Feature;Categorical;Occupation;type of job (categorical: 'admin.','blue-collar','entrepreneur','housemaid','management','retired','self-employed','services','student','technician','unemployed','unknown');;no|marital;Feature;Categorical;Marital Status;marital status (categorical: 'divorced','married','single','unknown'; note: 'divorced' means divorced or widowed);;no|education;Feature;Categorical;Education Level;(categorical: 'basic.4y','basic.6y','basic.9y','high.school','illiterate','professional.course','university.degree','unknown');;no|default;Feature;Binary;;has credit in default?;;no|balance;Feature;Integer;;average yearly balance;euros;no|housing;Feature;Binary;;has housing loan?;;no|loan;Feature;Binary;;has personal loan?;;no|contact;Feature;Categorical;;contact communication type (categorical: 'cellular','telephone');;yes|day_of_week;Feature;Date;;last contact day of the week;;no|month;Feature;Date;;last contact month of year (categorical: 'jan', 'feb', 'mar', ..., 'nov', 'dec');;no|duration;Feature;Integer;;last contact duration, in seconds (numeric). Important note: this attribute highly affects the output target (e.g., if duration=0 then y='no'). Yet, the duration is not known before a call is performed. Also, after the end of the call y is obviously known. Thus, this input should only be included for benchmark purposes and should be discarded if the intention is to have a realistic predictive model.;;no|campaign;Feature;Integer;;number of contacts performed during this campaign and for this client (numeric, includes last contact);;no|pdays;Feature;Integer;;number of days that passed by after the client was last contacted from a previous campaign (numeric; -1 means client was not previously contacted);;yes|previous;Feature;Integer;;number of contacts performed before this campaign and for this client;;no|poutcome;Feature;Categorical;;outcome of the previous marketing campaign (categorical: 'failure','nonexistent','success');;yes|y;Target;Binary;;has the client subscribed a term deposit?;;no","Input variables:
+   # bank client data:
+   1 - age (numeric)
+   2 - job : type of job (categorical: ""admin."",""unknown"",""unemployed"",""management"",""housemaid"",""entrepreneur"",""student"",
+                                       ""blue-collar"",""self-employed"",""retired"",""technician"",""services"") 
+   3 - marital : marital status (categorical: ""married"",""divorced"",""single""; note: ""divorced"" means divorced or widowed)
+   4 - education (categorical: ""unknown"",""secondary"",""primary"",""tertiary"")
+   5 - default: has credit in default? (binary: ""yes"",""no"")
+   6 - balance: average yearly balance, in euros (numeric) 
+   7 - housing: has housing loan? (binary: ""yes"",""no"")
+   8 - loan: has personal loan? (binary: ""yes"",""no"")
+   # related with the last contact of the current campaign:
+   9 - contact: contact communication type (categorical: ""unknown"",""telephone"",""cellular"") 
+  10 - day: last contact day of the month (numeric)
+  11 - month: last contact month of year (categorical: ""jan"", ""feb"", ""mar"", ..., ""nov"", ""dec"")
+  12 - duration: last contact duration, in seconds (numeric)
+   # other attributes:
+  13 - campaign: number of contacts performed during this campaign and for this client (numeric, includes last contact)
+  14 - pdays: number of days that passed by after the client was last contacted from a previous campaign (numeric, -1 means client was not previously contacted)
+  15 - previous: number of contacts performed before this campaign and for this client (numeric)
+  16 - poutcome: outcome of the previous marketing campaign (categorical: ""unknown"",""other"",""failure"",""success"")
+
+  Output variable (desired target):
+  17 - y - has the client subscribed a term deposit? (binary: ""yes"",""no"")",,,,,,9 citations,271079 views
+109,28-10-2024 15:26,Wine,6/30/1991,Using chemical analysis to determine the origin of wines,Tabular,Physics and Chemistry,Classification,"Integer, Real",178,13,test,"These data are the results of a chemical analysis of wines grown in the same region in Italy but derived from three different cultivars. The analysis determined the quantities of 13 constituents found in each of the three types of wines. 
+
+I think that the initial data set had around 30 variables, but for some reason I only have the 13 dimensional version. I had a list of what the 30 or so variables were, but a.)  I lost it, and b.), I would not know which 13 variables are included in the set.
+
+The attributes are (dontated by Riccardo Leardi, riclea@anchem.unige.it )
+1) Alcohol
+2) Malic acid
+3) Ash
+4) Alcalinity of ash  
+5) Magnesium
+6) Total phenols
+7) Flavanoids
+8) Nonflavanoid phenols
+9) Proanthocyanins
+10)Color intensity
+11)Hue
+12)OD280/OD315 of diluted wines
+13)Proline 
+
+In a classification context, this is a well posed problem with ""well behaved"" class structures. A good data set for first testing of a new classifier, but not very challenging.           ","Comparative analysis of statistical pattern recognition methods in high dimensional settings
+By S. Aeberhard, D. Coomans, O. Vel. 1994
+Published in Pattern Recognition",Variable Name;Role;Type;Description;Units;Missing Values|class;Target;Categorical;;;no|Alcohol;Feature;Continuous;;;no|Malicacid;Feature;Continuous;;;no|Ash;Feature;Continuous;;;no|Alcalinity_of_ash;Feature;Continuous;;;no|Magnesium;Feature;Integer;;;no|Total_phenols;Feature;Continuous;;;no|Flavanoids;Feature;Continuous;;;no|Nonflavanoid_phenols;Feature;Continuous;;;no|Proanthocyanins;Feature;Continuous;;;no|Color_intensity;Feature;Continuous;;;no|Hue;Feature;Continuous;;;no|0D280_0D315_of_diluted_wines;Feature;Continuous;;;no|Proline;Feature;Integer;;;no,"All attributes are continuous
+ 
+No statistics available, but suggest to standardise variables for certain uses (e.g. for us with classifiers which are NOT scale invariant)
+
+NOTE: 1st attribute is class identifier (1-3)","Stefan Aeberhard
+M. Forina",10.24432/C5PC7J Link: https://doi.org/10.24432/C5PC7J,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",File;Size|wine.data;10.5 KB|wine.names;3 KB|Index;105 Bytes,Chemistry,131 citations,252764 views
+320,28-10-2024 15:26,Student Performance,11/26/2014,Predict student performance in secondary education (high school).,Multivariate,Social Science,"Classification, Regression",Integer,649,30,"This data approach student achievement in secondary education of two Portuguese schools. The data attributes include student grades, demographic, social and school related features) and it was collected by using school reports and questionnaires. Two datasets are provided regarding the performance in two distinct subjects: Mathematics (mat) and Portuguese language (por). In [Cortez and Silva, 2008], the two datasets were modeled under binary/five-level classification and regression tasks. Important note: the target attribute G3 has a strong correlation with attributes G2 and G1. This occurs because G3 is the final year grade (issued at the 3rd period), while G1 and G2 correspond to the 1st and 2nd period grades. It is more difficult to predict G3 without G2 and G1, but such prediction is much more useful (see paper source for more details).",No,"Using data mining to predict secondary school student performance
+By P. Cortez, A. M. G. Silva. 2008
+Published in Proceedings of 5th Annual Future Business Technology Conference","Variable Name;Role;Type;Demographic;Description;Units;Missing Values|school;Feature;Categorical;;student's school (binary: 'GP' - Gabriel Pereira or 'MS' - Mousinho da Silveira);;no|sex;Feature;Binary;Sex;student's sex (binary: 'F' - female or 'M' - male);;no|age;Feature;Integer;Age;student's age (numeric: from 15 to 22);;no|address;Feature;Categorical;;student's home address type (binary: 'U' - urban or 'R' - rural);;no|famsize;Feature;Categorical;Other;family size (binary: 'LE3' - less or equal to 3 or 'GT3' - greater than 3);;no|Pstatus;Feature;Categorical;Other;parent's cohabitation status (binary: 'T' - living together or 'A' - apart);;no|Medu;Feature;Integer;Education Level;mother's education (numeric: 0 - none, 1 - primary education (4th grade), 2 - 5th to 9th grade, 3 - secondary education or 4 - higher education);;no|Fedu;Feature;Integer;Education Level;father's education (numeric: 0 - none, 1 - primary education (4th grade), 2 â€“ 5th to 9th grade, 3 â€“ secondary education or 4 â€“ higher education);;no|Mjob;Feature;Categorical;Occupation;mother's job (nominal: 'teacher', 'health' care related, civil 'services' (e.g. administrative or police), 'at_home' or 'other');;no|Fjob;Feature;Categorical;Occupation;father's job (nominal: 'teacher', 'health' care related, civil 'services' (e.g. administrative or police), 'at_home' or 'other');;no|reason;Feature;Categorical;;reason to choose this school (nominal: close to 'home', school 'reputation', 'course' preference or 'other');;no|guardian;Feature;Categorical;;student's guardian (nominal: 'mother', 'father' or 'other');;no|traveltime;Feature;Integer;;home to school travel time (numeric: 1 - <15 min., 2 - 15 to 30 min., 3 - 30 min. to 1 hour, or 4 - >1 hour);;no|studytime;Feature;Integer;;weekly study time (numeric: 1 - <2 hours, 2 - 2 to 5 hours, 3 - 5 to 10 hours, or 4 - >10 hours);;no|failures;Feature;Integer;;number of past class failures (numeric: n if 1<=n<3, else 4);;no|schoolsup;Feature;Binary;;extra educational support (binary: yes or no);;no|famsup;Feature;Binary;;family educational support (binary: yes or no);;no|paid;Feature;Binary;;extra paid classes within the course subject (Math or Portuguese) (binary: yes or no);;no|activities;Feature;Binary;;extra-curricular activities (binary: yes or no);;no|nursery;Feature;Binary;;attended nursery school (binary: yes or no);;no|higher;Feature;Binary;;wants to take higher education (binary: yes or no);;no|internet;Feature;Binary;;Internet access at home (binary: yes or no);;no|romantic;Feature;Binary;;with a romantic relationship (binary: yes or no);;no|famrel;Feature;Integer;;quality of family relationships (numeric: from 1 - very bad to 5 - excellent);;no|freetime;Feature;Integer;;free time after school (numeric: from 1 - very low to 5 - very high);;no|goout;Feature;Integer;;going out with friends (numeric: from 1 - very low to 5 - very high);;no|Dalc;Feature;Integer;;workday alcohol consumption (numeric: from 1 - very low to 5 - very high);;no|Walc;Feature;Integer;;weekend alcohol consumption (numeric: from 1 - very low to 5 - very high);;no|health;Feature;Integer;;current health status (numeric: from 1 - very bad to 5 - very good);;no|absences;Feature;Integer;;number of school absences (numeric: from 0 to 93);;no|G1;Target;Categorical;;first period grade (numeric: from 0 to 20);;no|G2;Target;Categorical;;second period grade (numeric: from 0 to 20);;no|G3;Target;Integer;;final grade (numeric: from 0 to 20, output target);;no","# Attributes for both student-mat.csv (Math course) and student-por.csv (Portuguese language course) datasets:
+1 school - student's school (binary: 'GP' - Gabriel Pereira or 'MS' - Mousinho da Silveira)
+2 sex - student's sex (binary: 'F' - female or 'M' - male)
+3 age - student's age (numeric: from 15 to 22)
+4 address - student's home address type (binary: 'U' - urban or 'R' - rural)
+5 famsize - family size (binary: 'LE3' - less or equal to 3 or 'GT3' - greater than 3)
+6 Pstatus - parent's cohabitation status (binary: 'T' - living together or 'A' - apart)
+7 Medu - mother's education (numeric: 0 - none,  1 - primary education (4th grade), 2 â€“ 5th to 9th grade, 3 â€“ secondary education or 4 â€“ higher education)
+8 Fedu - father's education (numeric: 0 - none,  1 - primary education (4th grade), 2 â€“ 5th to 9th grade, 3 â€“ secondary education or 4 â€“ higher education)
+9 Mjob - mother's job (nominal: 'teacher', 'health' care related, civil 'services' (e.g. administrative or police), 'at_home' or 'other')
+10 Fjob - father's job (nominal: 'teacher', 'health' care related, civil 'services' (e.g. administrative or police), 'at_home' or 'other')
+11 reason - reason to choose this school (nominal: close to 'home', school 'reputation', 'course' preference or 'other')
+12 guardian - student's guardian (nominal: 'mother', 'father' or 'other')
+13 traveltime - home to school travel time (numeric: 1 - <15 min., 2 - 15 to 30 min., 3 - 30 min. to 1 hour, or 4 - >1 hour)
+14 studytime - weekly study time (numeric: 1 - <2 hours, 2 - 2 to 5 hours, 3 - 5 to 10 hours, or 4 - >10 hours)
+15 failures - number of past class failures (numeric: n if 1<=n<3, else 4)
+16 schoolsup - extra educational support (binary: yes or no)
+17 famsup - family educational support (binary: yes or no)
+18 paid - extra paid classes within the course subject (Math or Portuguese) (binary: yes or no)
+19 activities - extra-curricular activities (binary: yes or no)
+20 nursery - attended nursery school (binary: yes or no)
+21 higher - wants to take higher education (binary: yes or no)
+22 internet - Internet access at home (binary: yes or no)
+23 romantic - with a romantic relationship (binary: yes or no)
+24 famrel - quality of family relationships (numeric: from 1 - very bad to 5 - excellent)
+25 freetime - free time after school (numeric: from 1 - very low to 5 - very high)
+26 goout - going out with friends (numeric: from 1 - very low to 5 - very high)
+27 Dalc - workday alcohol consumption (numeric: from 1 - very low to 5 - very high)
+28 Walc - weekend alcohol consumption (numeric: from 1 - very low to 5 - very high)
+29 health - current health status (numeric: from 1 - very bad to 5 - very good)
+30 absences - number of school absences (numeric: from 0 to 93)
+
+# these grades are related with the course subject, Math or Portuguese:
+31 G1 - first period grade (numeric: from 0 to 20)
+31 G2 - second period grade (numeric: from 0 to 20)
+32 G3 - final grade (numeric: from 0 to 20, output target)",,,,,,6 citations,209240 views
+352,28-10-2024 15:26,Online Retail,11-05-2015,This is a transactional data set which contains all the transactions occurring between 01/12/2010 and 09/12/2011 for a UK-based and registered non-store online retail.,"Multivariate, Sequential, Time-Series",Business,"Classification, Clustering","Integer, Real",541909,6,This is a transactional data set which contains all the transactions occurring between 01/12/2010 and 09/12/2011 for a UK-based and registered non-store online retail.The company mainly sells unique all-occasion gifts. Many customers of the company are wholesalers.,No,"Data mining for the online retail industry: A case study of RFM model-based customer segmentation using data mining
+By Daqing Chen, Sai Laing Sain, Kun Guo. 2012
+Published in Journal of Database Marketing and Customer Strategy Management, Vol. 19, No. 3","Variable Name;Role;Type;Description;Units;Missing Values|InvoiceNo;ID;Categorical;a 6-digit integral number uniquely assigned to each transaction. If this code starts with letter 'c', it indicates a cancellation;;no|StockCode;ID;Categorical;a 5-digit integral number uniquely assigned to each distinct product;;no|Description;Feature;Categorical;product name;;no|Quantity;Feature;Integer;the quantities of each product (item) per transaction;;no|InvoiceDate;Feature;Date;the day and time when each transaction was generated;;no|UnitPrice;Feature;Continuous;product price per unit;sterling;no|CustomerID;Feature;Categorical;a 5-digit integral number uniquely assigned to each customer;;no|Country;Feature;Categorical;the name of the country where each customer resides;;no","InvoiceNo: Invoice number. Nominal, a 6-digit integral number uniquely assigned to each transaction. If this code starts with letter 'c', it indicates a cancellation. 
+StockCode: Product (item) code. Nominal, a 5-digit integral number uniquely assigned to each distinct product.
+Description: Product (item) name. Nominal.
+Quantity: The quantities of each product (item) per transaction. Numeric. 
+InvoiceDate: Invoice Date and time. Numeric, the day and time when each transaction was generated.
+UnitPrice: Unit price. Numeric, Product price per unit in sterling.
+CustomerID: Customer number. Nominal, a 5-digit integral number uniquely assigned to each customer.
+Country: Country name. Nominal, the name of the country where each customer resides. ","Daqing Chen
+chend@lsbu.ac.uk
+School of Engineering;London South Bank University",10.24432/C5BW33 Link: https://doi.org/10.24432/C5BW33,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",,sales,8 citations,186308 views
+19,28-10-2024 15:26,Car Evaluation,5/31/1997,"Derived from simple hierarchical decision model, this database may be useful for testing constructive induction and structure discovery methods.",Multivariate,Other,Classification,Categorical,1728,6,"Car Evaluation Database was derived from a simple hierarchical decision model originally developed for the demonstration of DEX, M. Bohanec, V. Rajkovic: Expert system for decision making. Sistemica 1(1), pp. 145-157, 1990.). The model evaluates cars according to the following concept structure:
+
+CAR                      car acceptability
+. PRICE                  overall price
+. . buying               buying price
+. . maint                price of the maintenance
+. TECH                   technical characteristics
+. . COMFORT              comfort
+. . . doors              number of doors
+. . . persons            capacity in terms of persons to carry
+. . . lug_boot           the size of luggage boot
+. . safety               estimated safety of the car
+
+Input attributes are printed in lowercase. Besides the target concept (CAR), the model includes three intermediate concepts: PRICE, TECH, COMFORT. Every concept is in the original model related to its lower level descendants by a set of examples (for these examples sets see http://www-ai.ijs.si/BlazZupan/car.html).
+
+The Car Evaluation Database contains examples with the structural information removed, i.e., directly relates CAR to the six input attributes: buying, maint, doors, persons, lug_boot, safety.
+
+Because of known underlying concept structure, this database may be particularly useful for testing constructive induction and structure discovery methods.",No,"Knowledge acquisition and explanation for multi-attribute decision making
+By M. Bohanec, V. Rajkovic. 1988
+Published in 8th Intl Workshop on Expert Systems and their Applications, Avignon, France","Variable Name;Role;Type;Description;Units;Missing Values|buying;Feature;Categorical;buying price;;no|maint;Feature;Categorical;price of the maintenance;;no|doors;Feature;Categorical;number of doors;;no|persons;Feature;Categorical;capacity in terms of persons to carry;;no|lug_boot;Feature;Categorical;the size of luggage boot;;no|safety;Feature;Categorical;estimated safety of the car;;no|class;Target;Categorical;evaulation level (unacceptable, acceptable, good, very good);;no","buying:   vhigh, high, med, low.
+maint:    vhigh, high, med, low.
+doors:    2, 3, 4, 5more.
+persons:  2, 4, more.
+lug_boot: small, med, big.
+safety:   low, med, high.",Marko Bohanec,10.24432/C5JP48 Link: https://doi.org/10.24432/C5JP48,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",File;Size|car.data;50.7 KB|car.names;3 KB|car.c45-names;276 Bytes,automobile,34 citations,158989 views
+34,28-10-2024 15:26,Diabetes,,This diabetes dataset is from AIM '94,"Multivariate, Time-Series",Health and Medicine,Classification,"Categorical, Integer",1,20,"Diabetes patient records were obtained from two sources:  an automatic electronic recording device and paper records.  The automatic device had an internal clock to timestamp events, whereas the paper records only provided ""logical time"" slots (breakfast, lunch, dinner, bedtime).  For paper records, fixed times were assigned to breakfast (08:00), lunch (12:00), dinner (18:00), and bedtime (22:00).  Thus paper records have fictitious uniform recording times whereas electronic records have more realistic time stamps.
+
+Diabetes files consist of four fields per record.  Each field is separated by a tab and each record is separated by a newline.
+
+File Names and format:
+(1) Date in MM-DD-YYYY format
+(2) Time in XX:YY format
+(3) Code
+(4) Value
+
+The Code field is deciphered as follows:
+
+33 = Regular insulin dose
+34 = NPH insulin dose
+35 = UltraLente insulin dose
+48 = Unspecified blood glucose measurement
+57 = Unspecified blood glucose measurement
+58 = Pre-breakfast blood glucose measurement
+59 = Post-breakfast blood glucose measurement
+60 = Pre-lunch blood glucose measurement
+61 = Post-lunch blood glucose measurement
+62 = Pre-supper blood glucose measurement
+63 = Post-supper blood glucose measurement
+64 = Pre-snack blood glucose measurement
+65 = Hypoglycemic symptoms
+66 = Typical meal ingestion
+67 = More-than-usual meal ingestion
+68 = Less-than-usual meal ingestion
+69 = Typical exercise activity
+70 = More-than-usual exercise activity
+71 = Less-than-usual exercise activity
+72 = Unspecified special event 
+The diabetes files consist of four fields per record.  Each field is separated by a tab and each record is separated by a newline.File Names and format:(1) Date in MM-DD-YYYY format(2) Time in XX:YY format(3) Code(4) Value",No,"Diabetes files consist of four fields per record.  Each field is separated by a tab and each record is separated by a newline.
+
+File Names and format:
+(1) Date in MM-DD-YYYY format
+(2) Time in XX:YY format
+(3) Code
+(4) Value
+SHOW MORE",File;Size|diabetes-data.tar.Z;183.2 KB|README;682 Bytes|Index;115 Bytes,,Michael Kahn,10.24432/C5T59G Link: https://doi.org/10.24432/C5T59G,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",,health,102 citations,140399 views
+697,28-10-2024 15:26,Predict Students' Dropout and Academic Success,12-12-2021,"A dataset created from a higher education institution (acquired from several disjoint databases) related to students enrolled in different undergraduate degrees, such as agronomy, design, education, nursing, journalism, management, social service, and technologies. The dataset includes information known at the time of student enrollment (academic path, demographics, and social-economic factors) and the students' academic performance at the end of the first and second semesters. The data is used to build classification models to predict students' dropout and academic sucess. The problem is formulated as a three category classification task, in which there is a strong imbalance towards one of the classes.",Tabular,Social Science,Classification,"Real, Categorical, Integer",4424,36,"The dataset was created in a project that aims to contribute to the reduction of academic dropout and failure in higher education, by using machine learning techniques to identify students at risk at an early stage of their academic path, so that strategies to support them can be put into place. 
+
+The dataset includes information known at the time of student enrollment – academic path, demographics, and social-economic factors. 
+
+The problem is formulated as a three category classification task (dropout, enrolled, and graduate) at the end of the normal duration of the course. ","This dataset is supported by program SATDAP - Capacitação da Administração Pública under grant POCI-05-5762-FSE-000191, Portugal.","Early prediction of student's performance in higher education: a case study
+By Mónica V. Martins, Daniel Tolledo, Jorge Machado, Luís M. T. Baptista, and Valentim Realinho. 2021
+Published in Trends and Applications in Information Systems and Technologies","Variable Name;Role;Type;Demographic;Description;Units;Missing Values|Marital Status;Feature;Integer;Marital Status;1 – single 2 – married 3 – widower 4 – divorced 5 – facto union 6 – legally separated;;no|Application mode;Feature;Integer;;1 - 1st phase - general contingent 2 - Ordinance No. 612/93 5 - 1st phase - special contingent (Azores Island) 7 - Holders of other higher courses 10 - Ordinance No. 854-B/99 15 - International student (bachelor) 16 - 1st phase - special contingent (Madeira Island) 17 - 2nd phase - general contingent 18 - 3rd phase - general contingent 26 - Ordinance No. 533-A/99, item b2) (Different Plan) 27 - Ordinance No. 533-A/99, item b3 (Other Institution) 39 - Over 23 years old 42 - Transfer 43 - Change of course 44 - Technological specialization diploma holders 51 - Change of institution/course 53 - Short cycle diploma holders 57 - Change of institution/course (International);;no|Application order;Feature;Integer;;Application order (between 0 - first choice; and 9 last choice);;no|Course;Feature;Integer;;33 - Biofuel Production Technologies 171 - Animation and Multimedia Design 8014 - Social Service (evening attendance) 9003 - Agronomy 9070 - Communication Design 9085 - Veterinary Nursing 9119 - Informatics Engineering 9130 - Equinculture 9147 - Management 9238 - Social Service 9254 - Tourism 9500 - Nursing 9556 - Oral Hygiene 9670 - Advertising and Marketing Management 9773 - Journalism and Communication 9853 - Basic Education 9991 - Management (evening attendance);;no|Daytime/evening attendance;Feature;Integer;;1 – daytime 0 - evening;;no|Previous qualification;Feature;Integer;Education Level;1 - Secondary education 2 - Higher education - bachelor's degree 3 - Higher education - degree 4 - Higher education - master's 5 - Higher education - doctorate 6 - Frequency of higher education 9 - 12th year of schooling - not completed 10 - 11th year of schooling - not completed 12 - Other - 11th year of schooling 14 - 10th year of schooling 15 - 10th year of schooling - not completed 19 - Basic education 3rd cycle (9th/10th/11th year) or equiv. 38 - Basic education 2nd cycle (6th/7th/8th year) or equiv. 39 - Technological specialization course 40 - Higher education - degree (1st cycle) 42 - Professional higher technical course 43 - Higher education - master (2nd cycle);;no|Previous qualification (grade);Feature;Continuous;;Grade of previous qualification (between 0 and 200);;no|Nacionality;Feature;Integer;Nationality;1 - Portuguese; 2 - German; 6 - Spanish; 11 - Italian; 13 - Dutch; 14 - English; 17 - Lithuanian; 21 - Angolan; 22 - Cape Verdean; 24 - Guinean; 25 - Mozambican; 26 - Santomean; 32 - Turkish; 41 - Brazilian; 62 - Romanian; 100 - Moldova (Republic of); 101 - Mexican; 103 - Ukrainian; 105 - Russian; 108 - Cuban; 109 - Colombian;;no|Mother's qualification;Feature;Integer;Education Level;1 - Secondary Education - 12th Year of Schooling or Eq. 2 - Higher Education - Bachelor's Degree 3 - Higher Education - Degree 4 - Higher Education - Master's 5 - Higher Education - Doctorate 6 - Frequency of Higher Education 9 - 12th Year of Schooling - Not Completed 10 - 11th Year of Schooling - Not Completed 11 - 7th Year (Old) 12 - Other - 11th Year of Schooling 14 - 10th Year of Schooling 18 - General commerce course 19 - Basic Education 3rd Cycle (9th/10th/11th Year) or Equiv. 22 - Technical-professional course 26 - 7th year of schooling 27 - 2nd cycle of the general high school course 29 - 9th Year of Schooling - Not Completed 30 - 8th year of schooling 34 - Unknown 35 - Can't read or write 36 - Can read without having a 4th year of schooling 37 - Basic education 1st cycle (4th/5th year) or equiv. 38 - Basic Education 2nd Cycle (6th/7th/8th Year) or Equiv. 39 - Technological specialization course 40 - Higher education - degree (1st cycle) 41 - Specialized higher studies course 42 - Professional higher technical course 43 - Higher Education - Master (2nd cycle) 44 - Higher Education - Doctorate (3rd cycle);;no|Father's qualification;Feature;Integer;Education Level;1 - Secondary Education - 12th Year of Schooling or Eq. 2 - Higher Education - Bachelor's Degree 3 - Higher Education - Degree 4 - Higher Education - Master's 5 - Higher Education - Doctorate 6 - Frequency of Higher Education 9 - 12th Year of Schooling - Not Completed 10 - 11th Year of Schooling - Not Completed 11 - 7th Year (Old) 12 - Other - 11th Year of Schooling 13 - 2nd year complementary high school course 14 - 10th Year of Schooling 18 - General commerce course 19 - Basic Education 3rd Cycle (9th/10th/11th Year) or Equiv. 20 - Complementary High School Course 22 - Technical-professional course 25 - Complementary High School Course - not concluded 26 - 7th year of schooling 27 - 2nd cycle of the general high school course 29 - 9th Year of Schooling - Not Completed 30 - 8th year of schooling 31 - General Course of Administration and Commerce 33 - Supplementary Accounting and Administration 34 - Unknown 35 - Can't read or write 36 - Can read without having a 4th year of schooling 37 - Basic education 1st cycle (4th/5th year) or equiv. 38 - Basic Education 2nd Cycle (6th/7th/8th Year) or Equiv. 39 - Technological specialization course 40 - Higher education - degree (1st cycle) 41 - Specialized higher studies course 42 - Professional higher technical course 43 - Higher Education - Master (2nd cycle) 44 - Higher Education - Doctorate (3rd cycle);;no|Mother's occupation;Feature;Integer;Occupation;0 - Student 1 - Representatives of the Legislative Power and Executive Bodies, Directors, Directors and Executive Managers 2 - Specialists in Intellectual and Scientific Activities 3 - Intermediate Level Technicians and Professions 4 - Administrative staff 5 - Personal Services, Security and Safety Workers and Sellers 6 - Farmers and Skilled Workers in Agriculture, Fisheries and Forestry 7 - Skilled Workers in Industry, Construction and Craftsmen 8 - Installation and Machine Operators and Assembly Workers 9 - Unskilled Workers 10 - Armed Forces Professions 90 - Other Situation 99 - (blank) 122 - Health professionals 123 - teachers 125 - Specialists in information and communication technologies (ICT) 131 - Intermediate level science and engineering technicians and professions 132 - Technicians and professionals, of intermediate level of health 134 - Intermediate level technicians from legal, social, sports, cultural and similar services 141 - Office workers, secretaries in general and data processing operators 143 - Data, accounting, statistical, financial services and registry-related operators 144 - Other administrative support staff 151 - personal service workers 152 - sellers 153 - Personal care workers and the like 171 - Skilled construction workers and the like, except electricians 173 - Skilled workers in printing, precision instrument manufacturing, jewelers, artisans and the like 175 - Workers in food processing, woodworking, clothing and other industries and crafts 191 - cleaning workers 192 - Unskilled workers in agriculture, animal production, fisheries and forestry 193 - Unskilled workers in extractive industry, construction, manufacturing and transport 194 - Meal preparation assistants;;no|Father's occupation;Feature;Integer;Occupation;0 - Student 1 - Representatives of the Legislative Power and Executive Bodies, Directors, Directors and Executive Managers 2 - Specialists in Intellectual and Scientific Activities 3 - Intermediate Level Technicians and Professions 4 - Administrative staff 5 - Personal Services, Security and Safety Workers and Sellers 6 - Farmers and Skilled Workers in Agriculture, Fisheries and Forestry 7 - Skilled Workers in Industry, Construction and Craftsmen 8 - Installation and Machine Operators and Assembly Workers 9 - Unskilled Workers 10 - Armed Forces Professions 90 - Other Situation 99 - (blank) 101 - Armed Forces Officers 102 - Armed Forces Sergeants 103 - Other Armed Forces personnel 112 - Directors of administrative and commercial services 114 - Hotel, catering, trade and other services directors 121 - Specialists in the physical sciences, mathematics, engineering and related techniques 122 - Health professionals 123 - teachers 124 - Specialists in finance, accounting, administrative organization, public and commercial relations 131 - Intermediate level science and engineering technicians and professions 132 - Technicians and professionals, of intermediate level of health 134 - Intermediate level technicians from legal, social, sports, cultural and similar services 135 - Information and communication technology technicians 141 - Office workers, secretaries in general and data processing operators 143 - Data, accounting, statistical, financial services and registry-related operators 144 - Other administrative support staff 151 - personal service workers 152 - sellers 153 - Personal care workers and the like 154 - Protection and security services personnel 161 - Market-oriented farmers and skilled agricultural and animal production workers 163 - Farmers, livestock keepers, fishermen, hunters and gatherers, subsistence 171 - Skilled construction workers and the like, except electricians 172 - Skilled workers in metallurgy, metalworking and similar 174 - Skilled workers in electricity and electronics 175 - Workers in food processing, woodworking, clothing and other industries and crafts 181 - Fixed plant and machine operators 182 - assembly workers 183 - Vehicle drivers and mobile equipment operators 192 - Unskilled workers in agriculture, animal production, fisheries and forestry 193 - Unskilled workers in extractive industry, construction, manufacturing and transport 194 - Meal preparation assistants 195 - Street vendors (except food) and street service providers;;no|Admission grade;Feature;Continuous;;Admission grade (between 0 and 200);;no|Displaced;Feature;Integer;;1 – yes 0 – no;;no|Educational special needs;Feature;Integer;;1 – yes 0 – no;;no|Debtor;Feature;Integer;;1 – yes 0 – no;;no|Tuition fees up to date;Feature;Integer;;1 – yes 0 – no;;no|Gender;Feature;Integer;Gender;1 – male 0 – female;;no|Scholarship holder;Feature;Integer;;1 – yes 0 – no;;no|Age at enrollment;Feature;Integer;Age;Age of studend at enrollment;;no|International;Feature;Integer;;1 – yes 0 – no;;no|Curricular units 1st sem (credited);Feature;Integer;;Number of curricular units credited in the 1st semester;;no|Curricular units 1st sem (enrolled);Feature;Integer;;Number of curricular units enrolled in the 1st semester;;no|Curricular units 1st sem (evaluations);Feature;Integer;;Number of evaluations to curricular units in the 1st semester;;no|Curricular units 1st sem (approved);Feature;Integer;;Number of curricular units approved in the 1st semester;;no|Curricular units 1st sem (grade);Feature;Integer;;Grade average in the 1st semester (between 0 and 20);;no|Curricular units 1st sem (without evaluations);Feature;Integer;;Number of curricular units without evalutions in the 1st semester;;no|Curricular units 2nd sem (credited);Feature;Integer;;Number of curricular units credited in the 2nd semester;;no|Curricular units 2nd sem (enrolled);Feature;Integer;;Number of curricular units enrolled in the 2nd semester;;no|Curricular units 2nd sem (evaluations);Feature;Integer;;Number of evaluations to curricular units in the 2nd semester;;no|Curricular units 2nd sem (approved);Feature;Integer;;Number of curricular units approved in the 2nd semester;;no|Curricular units 2nd sem (grade);Feature;Integer;;Grade average in the 2nd semester (between 0 and 20);;no|Curricular units 2nd sem (without evaluations);Feature;Integer;;Number of curricular units without evalutions in the 1st semester;;no|Unemployment rate;Feature;Continuous;;Unemployment rate (%);;no|Inflation rate;Feature;Continuous;;Inflation rate (%);;no|GDP;Feature;Continuous;;GDP;;no|Target;Target;Categorical;;Target. The problem is formulated as a three category classification task (dropout, enrolled, and graduate) at the end of the normal duration of the course;;no",,"Valentim Realinho
+vrealinho@
+Instituto Politécnico de Portalegre
+Mónica Vieira Martins
+mvmartins@ipportalegre.pt
+Instituto Politécnico de Portalegre
+Jorge Machado
+jmachado@ipportalegre.pt
+Instituto Politécnico de Portalegre
+Luís Baptista
+lmtb@ipportalegre.pt
+Instituto Politécnico de Portalegre",10.24432/C5MC89 Link: https://doi.org/10.24432/C5MC89,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",,Academic performance,1 citations,134067 views
+10,28-10-2024 15:26,Automobile,5/18/1987,From 1985 Ward's Automotive Yearbook,Multivariate,Other,Regression,"Categorical, Integer, Real",205,25,"This data set consists of three types of entities: (a) the specification of an auto in terms of various characteristics, (b) its assigned insurance risk rating, (c) its normalized losses in use as compared to other cars.  The second rating corresponds to the degree to which the auto is more risky than its price indicates. Cars are initially assigned a risk factor symbol associated with its price.   Then, if it is more risky (or less), this symbol is adjusted by moving it up (or down) the scale.  Actuarians call this process ""symboling"".  A value of +3 indicates that the auto is risky, -3 that it is probably pretty safe.
+
+The third factor is the relative average loss payment per insured vehicle year.  This value is normalized for all autos within a particular size classification (two-door small, station wagons, sports/speciality, etc...), and represents the average loss per car per year.
+
+Note: Several of the attributes in the database could be used as a ""class"" attribute.",Yes ,"Variable Name Role Type Description Units Missing Values
+num-of-doors Feature Integer four, two yes
+aspiration Feature Binary std, turbo no
+fuel-type Feature Binary diesel, gas no
+make Feature Categorical alfa-romero, audi, bmw, chevrolet, dodge, honda, isuzu, jaguar, mazda, mercedes-benz, mercury, mitsubishi, nissan, peugot, plymouth, porsche, renault, saab, subaru, toyota, volkswagen, volvo no
+normalized-losses Feature Continuous continuous from 65 to 256 yes
+symboling Target Integer -3, -2, -1, 0, 1, 2, 3 no
+Rows per page
+5
+10
+15
+20
+25
+20 to 26 of 26",,,Jeffrey Schlimmer,10.24432/C5B01C Link: https://doi.org/10.24432/C5B01C,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",,automobile,8 citations,126392 views
+1,28-10-2024 15:26,Abalone,11/30/1995,Predict the age of abalone from physical measurements,Tabular,Biology,"Classification, Regression","Categorical, Integer, Real",4177,8,"Predicting the age of abalone from physical measurements.  The age of abalone is determined by cutting the shell through the cone, staining it, and counting the number of rings through a microscope -- a boring and time-consuming task.  Other measurements, which are easier to obtain, are used to predict the age.  Further information, such as weather patterns and location (hence food availability) may be required to solve the problem.
+
+From the original data examples with missing values were removed (the majority having the predicted value missing), and the ranges of the continuous values have been scaled for use with an ANN (by dividing by 200).",No,"Variable Name Role Type Description Units Missing Values
+Sex Feature Categorical M, F, and I (infant) no
+Length Feature Continuous Longest shell measurement mm no
+Diameter Feature Continuous perpendicular to length mm no
+Height Feature Continuous with meat in shell mm no
+Whole_weight Feature Continuous whole abalone grams no
+Shucked_weight Feature Continuous weight of meat grams no
+Viscera_weight Feature Continuous gut weight (after bleeding) grams no
+Shell_weight Feature Continuous after being dried grams no
+Rings Target Integer +1.5 gives the age in years no
+Rows per page
+5
+10
+15
+20
+25
+0 to 9 of 9",,,"Warwick Nash
+Tracy Sellers
+Simon Talbot
+Andrew Cawthorn
+Wes Ford",10.24432/C55C7W Link: https://doi.org/10.24432/C55C7W,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",,ecology,57 citations,121227 views
+73,28-10-2024 15:27,Mushroom,4/26/1987,From Audobon Society Field Guide; mushrooms described in terms of physical characteristics; classification: poisonous or edible,Multivariate,Biology,Classification,Categorical,8124,22,"This data set includes descriptions of hypothetical samples corresponding to 23 species of gilled mushrooms in the Agaricus and Lepiota Family (pp. 500-525).  Each species is identified as definitely edible, definitely poisonous, or of unknown edibility and not recommended.  This latter class was combined with the poisonous one.  The Guide clearly states that there is no simple rule for determining the edibility of a mushroom; no rule like ``leaflets three, let it be'' for Poisonous Oak and Ivy.",Yes ,"Variable Name Role Type Description Units Missing Values
+spore-print-color Feature Categorical black=k,brown=n,buff=b,chocolate=h,green=r, orange=o,purple=u,white=w,yellow=y no
+population Feature Categorical abundant=a,clustered=c,numerous=n, scattered=s,several=v,solitary=y no
+habitat Feature Categorical grasses=g,leaves=l,meadows=m,paths=p, urban=u,waste=w,woods=d no
+Rows per page
+5
+10
+15
+20
+25
+20 to 23 of 23",,,,,,,ecology,77 citations,118105 views
+360,28-10-2024 15:27,Air Quality,3/22/2016,Contains the responses of a gas multisensor device deployed on the field in an Italian city. Hourly responses averages are recorded along with gas concentrations references from a certified analyzer.,"Multivariate, Time-Series",Computer Science,Regression,Real,9358,15,"The dataset contains 9358 instances of hourly averaged responses from an array of 5 metal oxide chemical sensors embedded in an Air Quality Chemical Multisensor Device. The device was located on the field in a significantly polluted area, at road level,within an Italian city. Data were recorded from March 2004 to February 2005 (one year)representing the longest freely available recordings of on field deployed air quality chemical sensor devices responses. Ground Truth hourly averaged concentrations for CO, Non Metanic Hydrocarbons, Benzene, Total Nitrogen Oxides (NOx) and Nitrogen Dioxide (NO2)  and were provided by a co-located reference certified analyzer. Evidences of cross-sensitivities as well as both concept and sensor drifts are present as described in De Vito et al., Sens. And Act. B, Vol. 129,2,2008 (citation required) eventually affecting sensors concentration estimation capabilities. Missing values are tagged with -200 value.
+This dataset can be used exclusively for research purposes. Commercial purposes are fully excluded.",Yes ,"On field calibration of an electronic nose for benzene estimation in an urban pollution monitoring scenario
+By S. D. Vito, E. Massera, M. Piga, L. Martinotto, G. Francia. 2008
+Published in Sensors and Actuators B: Chemical",Variable Name;Role;Type;Description;Units;Missing Values|Date;Feature;Date;;;no|Time;Feature;Categorical;;;no|CO(GT);Feature;Integer;True hourly averaged concentration CO in mg/m^3 (reference analyzer);mg/m^3;no|PT08.S1(CO);Feature;Categorical;hourly averaged sensor response (nominally CO targeted);;no|NMHC(GT);Feature;Integer;True hourly averaged overall Non Metanic HydroCarbons concentration in microg/m^3 (reference analyzer);microg/m^3;no|C6H6(GT);Feature;Continuous;True hourly averaged Benzene concentration in microg/m^3 (reference analyzer);microg/m^3;no|PT08.S2(NMHC);Feature;Categorical;hourly averaged sensor response (nominally NMHC targeted);;no|NOx(GT);Feature;Integer;True hourly averaged NOx concentration in ppb (reference analyzer);ppb;no|PT08.S3(NOx);Feature;Categorical;hourly averaged sensor response (nominally NOx targeted);;no|NO2(GT);Feature;Integer;True hourly averaged NO2 concentration in microg/m^3 (reference analyzer);microg/m^3;no|PT08.S4(NO2);Feature;Categorical;hourly averaged sensor response (nominally NO2 targeted);;no|PT08.S5(O3);Feature;Categorical;hourly averaged sensor response (nominally O3 targeted);;no|T;Feature;Continuous;Temperature;°C;no|RH;Feature;Continuous;Relative Humidity;%;no|AH;Feature;Continuous;Absolute Humidity;;no,"0 Date (DD/MM/YYYY)
+1 Time (HH.MM.SS)
+2 True hourly averaged concentration CO in mg/m^3  (reference analyzer)
+3 PT08.S1 (tin oxide)  hourly averaged sensor response (nominally  CO targeted) 
+4 True hourly averaged overall Non Metanic HydroCarbons concentration in microg/m^3 (reference analyzer)
+5 True hourly averaged Benzene concentration  in microg/m^3 (reference analyzer)
+6 PT08.S2 (titania) hourly averaged sensor response (nominally NMHC targeted) 
+7 True hourly averaged NOx concentration  in ppb (reference analyzer)
+8 PT08.S3 (tungsten oxide) hourly averaged sensor response (nominally NOx targeted) 
+9 True hourly averaged NO2 concentration in microg/m^3 (reference analyzer) 
+10 PT08.S4 (tungsten oxide) hourly averaged sensor response (nominally NO2 targeted) 
+11 PT08.S5 (indium oxide) hourly averaged sensor response (nominally O3 targeted)
+12 Temperature in Â°C 
+13 Relative Humidity (%)  
+14 AH Absolute Humidity",,,,,,4 citations,109341 views
+144,28-10-2024 15:27,Statlog (German Credit Data),11/16/1994,This dataset classifies people described by a set of attributes as good or bad credit risks. Comes in two formats (one all numeric). Also comes with a cost matrix,Multivariate,Social Science,Classification,"Categorical, Integer",1000,20,"Two datasets are provided.  the original dataset, in the form provided by Prof. Hofmann, contains categorical/symbolic attributes and is in the file ""german.data"".   
+ 
+For algorithms that need numerical attributes, Strathclyde University produced the file ""german.data-numeric"".  This file has been edited and several indicator variables added to make it suitable for algorithms which cannot cope with categorical variables.   Several attributes that are ordered categorical (such as attribute 17) have been coded as integer.    This was the form used by StatLog.
+
+This dataset requires use of a cost matrix (see below)
+
+ ..... 1        2
+----------------------------
+  1   0        1
+-----------------------
+  2   5        0
+
+(1 = Good,  2 = Bad)
+
+The rows represent the actual classification and the columns the predicted classification.
+
+It is worse to class a customer as good when they are bad (5), than it is to class a customer as bad when they are good (1).",No,"Variable Name Role Type Demographic Description Units Missing Values
+class Target Binary 1 = Good, 2 = Bad no
+Rows per page
+5
+10
+15
+20
+25
+20 to 21 of 21",,,Hans Hofmann,10.24432/C5NC77 Link: https://doi.org/10.24432/C5NC77,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",,finance,63 citations,103422 views
+602,28-10-2024 15:27,Dry Bean,9/13/2020,"Images of 13,611 grains of 7 different registered dry beans were taken with a high-resolution camera. A total of 16 features; 12 dimensions and 4 shape forms, were obtained from the grains.",Multivariate,Biology,Classification,"Integer, Real",13611,16,"Seven different types of dry beans were used in this research, taking into account the features such as form, shape, type, and structure by the market situation. A computer vision system was developed to distinguish seven different registered varieties of dry beans with similar features in order to obtain uniform seed classification. For the classification model, images of 13,611 grains of 7 different registered dry beans were taken with a high-resolution camera. Bean images obtained by computer vision system were subjected to segmentation and feature extraction stages, and a total of 16 features; 12 dimensions and 4 shape forms, were obtained from the grains.",No,"Multiclass classification of dry beans using computer vision and machine learning techniques
+By M. Koklu, Ilker Ali Özkan. 2020
+Published in Computers and Electronics in Agriculture","Variable Name;Role;Type;Description;Units;Missing Values|Area;Feature;Integer;The area of a bean zone and the number of pixels within its boundaries;pixels;no|Perimeter;Feature;Continuous;Bean circumference is defined as the length of its border.;;no|MajorAxisLength;Feature;Continuous;The distance between the ends of the longest line that can be drawn from a bean;;no|MinorAxisLength;Feature;Continuous;The longest line that can be drawn from the bean while standing perpendicular to the main axis;;no|AspectRatio;Feature;Continuous;Defines the relationship between MajorAxisLength and MinorAxisLength;;no|Eccentricity;Feature;Continuous;Eccentricity of the ellipse having the same moments as the region;;no|ConvexArea;Feature;Integer;Number of pixels in the smallest convex polygon that can contain the area of a bean seed;;no|EquivDiameter;Feature;Continuous;Equivalent diameter: The diameter of a circle having the same area as a bean seed area;;no|Extent;Feature;Continuous;The ratio of the pixels in the bounding box to the bean area;;no|Solidity;Feature;Continuous;Also known as convexity. The ratio of the pixels in the convex shell to those found in beans.;;no|Roundness;Feature;Continuous;Calculated with the following formula: (4piA)/(P^2);;no|Compactness;Feature;Continuous;Measures the roundness of an object;Ed/L;no|ShapeFactor1;Feature;Continuous;;;no|ShapeFactor2;Feature;Continuous;;;no|ShapeFactor3;Feature;Continuous;;;no|ShapeFactor4;Feature;Continuous;;;no|Class;Target;Categorical;(Seker, Barbunya, Bombay, Cali, Dermosan, Horoz and Sira);;no","1.) Area (A): The area of a bean zone and the number of pixels within its boundaries.
+2.) Perimeter (P): Bean circumference is defined as the length of its border.
+3.) Major axis length (L): The distance between the ends of the longest line that can be drawn from a bean.
+4.) Minor axis length (l): The longest line that can be drawn from the bean while standing perpendicular to the main axis.
+5.) Aspect ratio (K): Defines the relationship between L and l.
+6.) Eccentricity (Ec): Eccentricity of the ellipse having the same moments as the region.
+7.) Convex area (C): Number of pixels in the smallest convex polygon that can contain the area of a bean seed.
+8.) Equivalent diameter (Ed): The diameter of a circle having the same area as a bean seed area.
+9.) Extent (Ex): The ratio of the pixels in the bounding box to the bean area.
+10.)Solidity (S): Also known as convexity. The ratio of the pixels in the convex shell to those found in beans.
+11.)Roundness (R): Calculated with the following formula: (4piA)/(P^2)
+12.)Compactness (CO): Measures the roundness of an object: Ed/L
+13.)ShapeFactor1 (SF1)
+14.)ShapeFactor2 (SF2)
+15.)ShapeFactor3 (SF3)
+16.)ShapeFactor4 (SF4)
+17.)Class (Seker, Barbunya, Bombay, Cali, Dermosan, Horoz and Sira)",,,,,image processing,1 citations,99466 views
+240,28-10-2024 15:27,Human Activity Recognition Using Smartphones,12-09-2012,Human Activity Recognition database built from the recordings of 30 subjects performing activities of daily living (ADL) while carrying a waist-mounted smartphone with embedded inertial sensors.,"Multivariate, Time-Series",Computer Science,"Classification, Clustering",-,10299,-,"The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
+
+The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain.
+
+Check the README.txt file for further details about this dataset. 
+
+A video of the experiment including an example of the 6 recorded activities with one of the participants can be seen in the following link: http://www.youtube.com/watch?v=XOEN9W05_4A
+
+An updated version of this dataset can be found at http://archive.ics.uci.edu/ml/datasets/Smartphone-Based+Recognition+of+Human+Activities+and+Postural+Transitions. It includes labels of postural transitions between activities and also the full raw inertial signals instead of the ones pre-processed into windows. ",No,"A Public Domain Dataset for Human Activity Recognition using Smartphones
+By D. Anguita, A. Ghio, L. Oneto, X. Parra, Jorge Luis Reyes-Ortiz. 2013
+Published in The European Symposium on Artificial Neural Networks",Variable Name;Role;Type;Description;Units;Missing Values|;;;;;no,"For each record in the dataset it is provided:
+- Triaxial acceleration from the accelerometer (total acceleration) and the estimated body acceleration.
+- Triaxial Angular velocity from the gyroscope. 
+- A 561-feature vector with time and frequency domain variables. 
+- Its activity label. 
+- An identifier of the subject who carried out the experiment. ",,,,,,3 citations,98136 views
+350,28-10-2024 15:27,Default of Credit Card Clients,1/25/2016,This research aimed at the case of customers' default payments in Taiwan and compares the predictive accuracy of probability of default among six data mining methods.,Multivariate,Business,Classification,"Integer, Real",30000,23,"This research aimed at the case of customers' default payments in Taiwan and compares the predictive accuracy of probability of default among six data mining methods. From the perspective of risk management, the result of predictive accuracy of the estimated probability of default will be more valuable than the binary result of classification - credible or not credible clients. Because the real probability of default is unknown, this study presented the novel Sorting Smoothing Method to estimate the real probability of default. With the real probability of default as the response variable (Y), and the predictive probability of default as the independent variable (X), the simple linear regression result (Y = A + BX) shows that the forecasting model produced by artificial neural network has the highest coefficient of determination; its regression intercept (A) is close to zero, and regression coefficient (B) to one. Therefore, among the six data mining techniques, artificial neural network is the only one that can accurately estimate the real probability of default.",No,"The comparisons of data mining techniques for the predictive accuracy of probability of default of credit card clients
+By I. Yeh, Che-hui Lien. 2009
+Published in Expert systems with applications",Variable Name;Role;Type;Demographic;Description;Units;Missing Values|ID;ID;Integer;;;;no|X1;Feature;Integer;;LIMIT_BAL;;no|X2;Feature;Integer;Sex;SEX;;no|X3;Feature;Integer;Education Level;EDUCATION;;no|X4;Feature;Integer;Marital Status;MARRIAGE;;no|X5;Feature;Integer;Age;AGE;;no|X6;Feature;Integer;;PAY_0;;no|X7;Feature;Integer;;PAY_2;;no|X8;Feature;Integer;;PAY_3;;no|X9;Feature;Integer;;PAY_4;;no|X10;Feature;Integer;;PAY_5;;no|X11;Feature;Integer;;PAY_6;;no|X12;Feature;Integer;;BILL_AMT1;;no|X13;Feature;Integer;;BILL_AMT2;;no|X14;Feature;Integer;;BILL_AMT3;;no|X15;Feature;Integer;;BILL_AMT4;;no|X16;Feature;Integer;;BILL_AMT5;;no|X17;Feature;Integer;;BILL_AMT6;;no|X18;Feature;Integer;;PAY_AMT1;;no|X19;Feature;Integer;;PAY_AMT2;;no|X20;Feature;Integer;;PAY_AMT3;;no|X21;Feature;Integer;;PAY_AMT4;;no|X22;Feature;Integer;;PAY_AMT5;;no|X23;Feature;Integer;;PAY_AMT6;;no|Y;Target;Binary;;default payment next month;;no,"This research employed a binary variable, default payment (Yes = 1, No = 0), as the response variable. This study reviewed the literature and used the following 23 variables as explanatory variables:
+X1: Amount of the given credit (NT dollar): it includes both the individual consumer credit and his/her family (supplementary) credit.
+X2: Gender (1 = male; 2 = female).
+X3: Education (1 = graduate school; 2 = university; 3 = high school; 4 = others).
+X4: Marital status (1 = married; 2 = single; 3 = others).
+X5: Age (year).
+X6 - X11: History of past payment. We tracked the past monthly payment records (from April to September, 2005) as follows: X6 = the repayment status in September, 2005; X7 = the repayment status in August, 2005; . . .;X11 = the repayment status in April, 2005. The measurement scale for the repayment status is: -1 = pay duly; 1 = payment delay for one month; 2 = payment delay for two months; . . .; 8 = payment delay for eight months; 9 = payment delay for nine months and above.
+X12-X17: Amount of bill statement (NT dollar). X12 = amount of bill statement in September, 2005; X13 = amount of bill statement in August, 2005; . . .; X17 = amount of bill statement in April, 2005. 
+X18-X23: Amount of previous payment (NT dollar). X18 = amount paid in September, 2005; X19 = amount paid in August, 2005; . . .;X23 = amount paid in April, 2005.",,,,,,3 citations,97036 views
+544,28-10-2024 15:27,Estimation of Obesity Levels Based On Eating Habits and Physical Condition,8/26/2019,"This dataset include data for the estimation of obesity levels in individuals from the countries of Mexico, Peru and Colombia, based on their eating habits and physical condition.",Multivariate,Health and Medicine,"Classification, Regression, Clustering",Integer,2111,16,"This dataset include data for the estimation of obesity levels in individuals from the countries of Mexico, Peru and Colombia, based on their eating habits and physical condition. The data contains 17 attributes and 2111 records, the records are labeled with the class variable NObesity (Obesity Level), that allows classification of the data using the values of Insufficient Weight, Normal Weight, Overweight Level I, Overweight Level II, Obesity Type I, Obesity Type II and Obesity Type III. 77% of the data was generated synthetically using the Weka tool and the SMOTE filter, 23% of the data was collected directly from users through a web platform.",No,"Dataset for estimation of obesity levels based on eating habits and physical condition in individuals from Colombia, Peru and Mexico
+By Fabio Mendoza Palechor, Alexis De la Hoz Manotas. 2019
+Published in Data in Brief","Variable Name;Role;Type;Demographic;Description;Units;Missing Values|Gender;Feature;Categorical;Gender;;;no|Age;Feature;Continuous;Age;;;no|Height;Feature;Continuous;;;;no|Weight;Feature;Continuous;;;;no|family_history_with_overweight;Feature;Binary;;Has a family member suffered or suffers from overweight?;;no|FAVC;Feature;Binary;;Do you eat high caloric food frequently?;;no|FCVC;Feature;Integer;;Do you usually eat vegetables in your meals?;;no|NCP;Feature;Continuous;;How many main meals do you have daily?;;no|CAEC;Feature;Categorical;;Do you eat any food between meals?;;no|SMOKE;Feature;Binary;;Do you smoke?;;no|CH2O;Feature;Continuous;;How much water do you drink daily?;;no|SCC;Feature;Binary;;Do you monitor the calories you eat daily?;;no|FAF;Feature;Continuous;;How often do you have physical activity?;;no|TUE;Feature;Integer;;How much time do you use technological devices such as cell phone, videogames, television, computer and others?;;no|CALC;Feature;Categorical;;How often do you drink alcohol?;;no|MTRANS;Feature;Categorical;;Which transportation do you usually use?;;no|NObeyesdad;Target;Categorical;;Obesity level;;no",Read the article (https://doi.org/10.1016/j.dib.2019.104344) to see the description of the attributes.,,,,,10.24432/C5H31Z,1 citations,94091 views
+275,28-10-2024 15:27,Bike Sharing,12/19/2013,This dataset contains the hourly and daily count of rental bikes between years 2011 and 2012 in Capital bikeshare system with the corresponding weather and seasonal information.,Multivariate,Social Science,Regression,"Integer, Real",17389,13,"Bike sharing systems are new generation of traditional bike rentals where whole process from membership, rental and return back has become automatic. Through these systems, user is able to easily rent a bike from a particular position and return back at another position. Currently, there are about over 500 bike-sharing programs around the world which is composed of over 500 thousands bicycles. Today, there exists great interest in these systems due to their important role in traffic, environmental and health issues. 
+
+Apart from interesting real world applications of bike sharing systems, the characteristics of data being generated by these systems make them attractive for the research. Opposed to other transport services such as bus or subway, the duration of travel, departure and arrival position is explicitly recorded in these systems. This feature turns bike sharing system into a virtual sensor network that can be used for sensing mobility in the city. Hence, it is expected that most of important events in the city could be detected via monitoring these data.",No,"Event labeling combining ensemble detectors and background knowledge
+By Hadi Fanaee-T, João Gama. 2013
+Published in Progress in Artificial Intelligence","Variable Name;Role;Type;Description;Units;Missing Values|instant;ID;Integer;record index;;no|dteday;Feature;Date;date;;no|season;Feature;Categorical;1:winter, 2:spring, 3:summer, 4:fall;;no|yr;Feature;Categorical;year (0: 2011, 1: 2012);;no|mnth;Feature;Categorical;month (1 to 12);;no|hr;Feature;Categorical;hour (0 to 23);;no|holiday;Feature;Binary;weather day is holiday or not (extracted from http://dchr.dc.gov/page/holiday-schedule);;no|weekday;Feature;Categorical;day of the week;;no|workingday;Feature;Binary;if day is neither weekend nor holiday is 1, otherwise is 0;;no|weathersit;Feature;Categorical;- 1: Clear, Few clouds, Partly cloudy, Partly cloudy;;no|temp;Feature;Continuous;Normalized temperature in Celsius. The values are derived via (t-t_min)/(t_max-t_min), t_min=-8, t_max=+39 (only in hourly scale);C;no|atemp;Feature;Continuous;Normalized feeling temperature in Celsius. The values are derived via (t-t_min)/(t_max-t_min), t_min=-16, t_max=+50 (only in hourly scale);C;no|hum;Feature;Continuous;Normalized humidity. The values are divided to 100 (max);;no|windspeed;Feature;Continuous;Normalized wind speed. The values are divided to 67 (max);;no|casual;Other;Integer;count of casual users;;no|registered;Other;Integer;count of registered users;;no|cnt;Target;Integer;count of total rental bikes including both casual and registered;;no","Both hour.csv and day.csv have the following fields, except hr which is not available in day.csv
+ 
+ - instant: record index
+ - dteday : date
+ - season : season (1:winter, 2:spring, 3:summer, 4:fall)
+ - yr : year (0: 2011, 1:2012)
+ - mnth : month ( 1 to 12)
+ - hr : hour (0 to 23)
+ - holiday : weather day is holiday or not (extracted from http://dchr.dc.gov/page/holiday-schedule)
+ - weekday : day of the week
+ - workingday : if day is neither weekend nor holiday is 1, otherwise is 0.
+ + weathersit : 
+  - 1: Clear, Few clouds, Partly cloudy, Partly cloudy
+  - 2: Mist + Cloudy, Mist + Broken clouds, Mist + Few clouds, Mist
+  - 3: Light Snow, Light Rain + Thunderstorm + Scattered clouds, Light Rain + Scattered clouds
+  - 4: Heavy Rain + Ice Pallets + Thunderstorm + Mist, Snow + Fog
+ - temp : Normalized temperature in Celsius. The values are derived via (t-t_min)/(t_max-t_min), t_min=-8, t_max=+39 (only in hourly scale)
+ - atemp: Normalized feeling temperature in Celsius. The values are derived via (t-t_min)/(t_max-t_min), t_min=-16, t_max=+50 (only in hourly scale)
+ - hum: Normalized humidity. The values are divided to 100 (max)
+ - windspeed: Normalized wind speed. The values are divided to 67 (max)
+ - casual: count of casual users
+ - registered: count of registered users
+ - cnt: count of total rental bikes including both casual and registered",,,,,,12 citations,90935 views
+9,28-10-2024 15:27,Auto MPG,07-06-1993,"Revised from CMU StatLib library, data concerns city-cycle fuel consumption",Multivariate,Other,Regression,"Real, Categorical, Integer",398,7,"This dataset is a slightly modified version of the dataset provided in the StatLib library.  In line with the use by Ross Quinlan (1993) in predicting the attribute ""mpg"", 8 of the original instances were removed because they had unknown values for the ""mpg"" attribute.  The original dataset is available in the file ""auto-mpg.data-original"".
+
+""The data concerns city-cycle fuel consumption in miles per gallon, to be predicted in terms of 3 multivalued discrete and 5 continuous attributes."" (Quinlan, 1993)",Yes ,"Variable Name Role Type Description Units Missing Values
+displacement Feature Continuous no
+mpg Target Continuous no
+cylinders Feature Integer no
+horsepower Feature Continuous yes
+weight Feature Continuous no
+acceleration Feature Continuous no
+model_year Feature Integer no
+origin Feature Integer no
+car_name ID Categorical no
+Rows per page
+5
+10
+15
+20
+25
+0 to 9 of 9",,,R. Quinlan,10.24432/C5859H Link: https://doi.org/10.24432/C5859H,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",,automobile,15 citations,89545 views
+94,28-10-2024 15:27,Spambase,6/30/1999,Classifying Email as Spam or Non-Spam,Multivariate,Computer Science,Classification,"Integer, Real",4601,57,Emails,"The ""spam"" concept is diverse: advertisements for products/web sites, make money fast schemes, chain letters, pornography...
+
+The classification task for this dataset is to determine whether a given email is spam or not.
+ 
+Our collection of spam e-mails came from our postmaster and individuals who had filed spam.  Our collection of non-spam e-mails came from filed work and personal e-mails, and hence the word 'george' and the area code '650' are indicators of non-spam.  These are useful when constructing a personalized spam filter.  One would either have to blind such non-spam indicators or get a very wide collection of non-spam to generate a general purpose spam filter.
+
+For background on spam: Cranor, Lorrie F., LaMacchia, Brian A.  Spam!, Communications of the ACM, 41(8):74-83, 1998.
+
+Typical performance is around ~7% misclassification error. False positives (marking good mail as spam) are very undesirable.If we insist on zero false positives in the training/testing set, 20-25% of the spam passed through the filter. See also Hewlett-Packard Internal-only Technical Report. External version forthcoming. ","Variable Name Role Type Description Units Missing Values
+char_freq_[ Feature Continuous no
+char_freq_! Feature Continuous no
+char_freq_$ Feature Continuous no
+char_freq_# Feature Continuous no
+capital_run_length_average Feature Continuous no
+capital_run_length_longest Feature Continuous no
+capital_run_length_total Feature Continuous no
+Class Target Binary spam (1) or not spam (0) no
+Rows per page
+5
+10
+15
+20
+25
+50 to 58 of 58",,,,,,,,44 citations,86537 views
+502,28-10-2024 15:27,Online Retail II,9/20/2019,A real online retail transaction data set of two years.,"Multivariate, Sequential, Time-Series, Text",Business,"Classification, Regression, Clustering","Integer, Real",1067371,-,"This Online Retail II data set contains all the transactions occurring for a UK-based and registered, non-store online retail between 01/12/2009 and 09/12/2011.The company mainly sells unique all-occasion gift-ware. Many customers of the company are wholesalers.",Yes ,"Variable Name Role Type Description Units Missing Values
+no
+no
+no
+no
+no
+no
+no
+no
+Rows per page
+5
+10
+15
+20
+25
+0 to 8 of 8",,,,,,,,0 citations,83340 views
+352,2024-10-28 15:41:36,Online Retail,11/5/2015,This is a transactional data set which contains all the transactions occurring between 01/12/2010 and 09/12/2011 for a UK-based and registered non-store online retail.,"Multivariate, Sequential, Time-Series",Business,"Classification, Clustering","Integer, Real",541909,6,This is a transactional data set which contains all the transactions occurring between 01/12/2010 and 09/12/2011 for a UK-based and registered non-store online retail.The company mainly sells unique all-occasion gifts. Many customers of the company are wholesalers.,No,"Data mining for the online retail industry: A case study of RFM model-based customer segmentation using data mining
+By Daqing Chen, Sai Laing Sain, Kun Guo. 2012
+Published in Journal of Database Marketing and Customer Strategy Management, Vol. 19, No. 3","Variable Name;Role;Type;Description;Units;Missing Values|InvoiceNo;ID;Categorical;a 6-digit integral number uniquely assigned to each transaction. If this code starts with letter 'c', it indicates a cancellation;;no|StockCode;ID;Categorical;a 5-digit integral number uniquely assigned to each distinct product;;no|Description;Feature;Categorical;product name;;no|Quantity;Feature;Integer;the quantities of each product (item) per transaction;;no|InvoiceDate;Feature;Date;the day and time when each transaction was generated;;no|UnitPrice;Feature;Continuous;product price per unit;sterling;no|CustomerID;Feature;Categorical;a 5-digit integral number uniquely assigned to each customer;;no|Country;Feature;Categorical;the name of the country where each customer resides;;no","InvoiceNo: Invoice number. Nominal, a 6-digit integral number uniquely assigned to each transaction. If this code starts with letter 'c', it indicates a cancellation. 
+StockCode: Product (item) code. Nominal, a 5-digit integral number uniquely assigned to each distinct product.
+Description: Product (item) name. Nominal.
+Quantity: The quantities of each product (item) per transaction. Numeric. 
+InvoiceDate: Invoice Date and time. Numeric, the day and time when each transaction was generated.
+UnitPrice: Unit price. Numeric, Product price per unit in sterling.
+CustomerID: Customer number. Nominal, a 5-digit integral number uniquely assigned to each customer.
+Country: Country name. Nominal, the name of the country where each customer resides. ","Daqing Chen
+chend@lsbu.ac.uk
+School of Engineering;London South Bank University",10.24432/C5BW33 Link: https://doi.org/10.24432/C5BW33,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",,sales,8 citations,186308 views
+19,2024-10-28 15:41:41,Car Evaluation,5/31/1997,"Derived from simple hierarchical decision model, this database may be useful for testing constructive induction and structure discovery methods.",Multivariate,Other,Classification,Categorical,1728,6,"Car Evaluation Database was derived from a simple hierarchical decision model originally developed for the demonstration of DEX, M. Bohanec, V. Rajkovic: Expert system for decision making. Sistemica 1(1), pp. 145-157, 1990.). The model evaluates cars according to the following concept structure:
+
+CAR                      car acceptability
+. PRICE                  overall price
+. . buying               buying price
+. . maint                price of the maintenance
+. TECH                   technical characteristics
+. . COMFORT              comfort
+. . . doors              number of doors
+. . . persons            capacity in terms of persons to carry
+. . . lug_boot           the size of luggage boot
+. . safety               estimated safety of the car
+
+Input attributes are printed in lowercase. Besides the target concept (CAR), the model includes three intermediate concepts: PRICE, TECH, COMFORT. Every concept is in the original model related to its lower level descendants by a set of examples (for these examples sets see http://www-ai.ijs.si/BlazZupan/car.html).
+
+The Car Evaluation Database contains examples with the structural information removed, i.e., directly relates CAR to the six input attributes: buying, maint, doors, persons, lug_boot, safety.
+
+Because of known underlying concept structure, this database may be particularly useful for testing constructive induction and structure discovery methods.",No,"Knowledge acquisition and explanation for multi-attribute decision making
+By M. Bohanec, V. RajkoviÄ. 1988
+Published in 8th Intl Workshop on Expert Systems and their Applications, Avignon, France","Variable Name;Role;Type;Description;Units;Missing Values|buying;Feature;Categorical;buying price;;no|maint;Feature;Categorical;price of the maintenance;;no|doors;Feature;Categorical;number of doors;;no|persons;Feature;Categorical;capacity in terms of persons to carry;;no|lug_boot;Feature;Categorical;the size of luggage boot;;no|safety;Feature;Categorical;estimated safety of the car;;no|class;Target;Categorical;evaulation level (unacceptable, acceptable, good, very good);;no","buying:   vhigh, high, med, low.
+maint:    vhigh, high, med, low.
+doors:    2, 3, 4, 5more.
+persons:  2, 4, more.
+lug_boot: small, med, big.
+safety:   low, med, high.",Marko Bohanec,10.24432/C5JP48 Link: https://doi.org/10.24432/C5JP48,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",File;Size|car.data;50.7 KB|car.names;3 KB|car.c45-names;276 Bytes,automobile,34 citations,158989 views
+34,2024-10-28 15:41:45,Diabetes,,This diabetes dataset is from AIM '94,"Multivariate, Time-Series",Health and Medicine,Classification,"Categorical, Integer",1,20,"Diabetes patient records were obtained from two sources:  an automatic electronic recording device and paper records.  The automatic device had an internal clock to timestamp events, whereas the paper records only provided ""logical time"" slots (breakfast, lunch, dinner, bedtime).  For paper records, fixed times were assigned to breakfast (08:00), lunch (12:00), dinner (18:00), and bedtime (22:00).  Thus paper records have fictitious uniform recording times whereas electronic records have more realistic time stamps.
+
+Diabetes files consist of four fields per record.  Each field is separated by a tab and each record is separated by a newline.
+
+File Names and format:
+(1) Date in MM-DD-YYYY format
+(2) Time in XX:YY format
+(3) Code
+(4) Value
+
+The Code field is deciphered as follows:
+
+33 = Regular insulin dose
+34 = NPH insulin dose
+35 = UltraLente insulin dose
+48 = Unspecified blood glucose measurement
+57 = Unspecified blood glucose measurement
+58 = Pre-breakfast blood glucose measurement
+59 = Post-breakfast blood glucose measurement
+60 = Pre-lunch blood glucose measurement
+61 = Post-lunch blood glucose measurement
+62 = Pre-supper blood glucose measurement
+63 = Post-supper blood glucose measurement
+64 = Pre-snack blood glucose measurement
+65 = Hypoglycemic symptoms
+66 = Typical meal ingestion
+67 = More-than-usual meal ingestion
+68 = Less-than-usual meal ingestion
+69 = Typical exercise activity
+70 = More-than-usual exercise activity
+71 = Less-than-usual exercise activity
+72 = Unspecified special event 
+The diabetes files consist of four fields per record.  Each field is separated by a tab and each record is separated by a newline.File Names and format:(1) Date in MM-DD-YYYY format(2) Time in XX:YY format(3) Code(4) Value",No,"Diabetes files consist of four fields per record.  Each field is separated by a tab and each record is separated by a newline.
+
+File Names and format:
+(1) Date in MM-DD-YYYY format
+(2) Time in XX:YY format
+(3) Code
+(4) Value
+SHOW MORE",File;Size|diabetes-data.tar.Z;183.2 KB|README;682 Bytes|Index;115 Bytes,,Michael Kahn,10.24432/C5T59G Link: https://doi.org/10.24432/C5T59G,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",,health,102 citations,140399 views
+697,2024-10-28 15:41:51,Predict Students' Dropout and Academic Success,12/12/2021,"A dataset created from a higher education institution (acquired from several disjoint databases) related to students enrolled in different undergraduate degrees, such as agronomy, design, education, nursing, journalism, management, social service, and technologies. The dataset includes information known at the time of student enrollment (academic path, demographics, and social-economic factors) and the students' academic performance at the end of the first and second semesters. The data is used to build classification models to predict students' dropout and academic sucess. The problem is formulated as a three category classification task, in which there is a strong imbalance towards one of the classes.",Tabular,Social Science,Classification,"Real, Categorical, Integer",4424,36,"The dataset was created in a project that aims to contribute to the reduction of academic dropout and failure in higher education, by using machine learning techniques to identify students at risk at an early stage of their academic path, so that strategies to support them can be put into place. 
+
+The dataset includes information known at the time of student enrollment â€“ academic path, demographics, and social-economic factors. 
+
+The problem is formulated as a three category classification task (dropout, enrolled, and graduate) at the end of the normal duration of the course. ","This dataset is supported by program SATDAP - CapacitaÃ§Ã£o da AdministraÃ§Ã£o PÃºblica under grant POCI-05-5762-FSE-000191, Portugal.","Early prediction of student's performance in higher education: a case study
+By MÃ³nica V. Martins, Daniel Tolledo, Jorge Machado, LuÃ­s M. T. Baptista, and Valentim Realinho. 2021
+Published in Trends and Applications in Information Systems and Technologies","Variable Name;Role;Type;Demographic;Description;Units;Missing Values|Marital Status;Feature;Integer;Marital Status;1 â€“ single 2 â€“ married 3 â€“ widower 4 â€“ divorced 5 â€“ facto union 6 â€“ legally separated;;no|Application mode;Feature;Integer;;1 - 1st phase - general contingent 2 - Ordinance No. 612/93 5 - 1st phase - special contingent (Azores Island) 7 - Holders of other higher courses 10 - Ordinance No. 854-B/99 15 - International student (bachelor) 16 - 1st phase - special contingent (Madeira Island) 17 - 2nd phase - general contingent 18 - 3rd phase - general contingent 26 - Ordinance No. 533-A/99, item b2) (Different Plan) 27 - Ordinance No. 533-A/99, item b3 (Other Institution) 39 - Over 23 years old 42 - Transfer 43 - Change of course 44 - Technological specialization diploma holders 51 - Change of institution/course 53 - Short cycle diploma holders 57 - Change of institution/course (International);;no|Application order;Feature;Integer;;Application order (between 0 - first choice; and 9 last choice);;no|Course;Feature;Integer;;33 - Biofuel Production Technologies 171 - Animation and Multimedia Design 8014 - Social Service (evening attendance) 9003 - Agronomy 9070 - Communication Design 9085 - Veterinary Nursing 9119 - Informatics Engineering 9130 - Equinculture 9147 - Management 9238 - Social Service 9254 - Tourism 9500 - Nursing 9556 - Oral Hygiene 9670 - Advertising and Marketing Management 9773 - Journalism and Communication 9853 - Basic Education 9991 - Management (evening attendance);;no|Daytime/evening attendance;Feature;Integer;;1 â€“ daytime 0 - evening;;no|Previous qualification;Feature;Integer;Education Level;1 - Secondary education 2 - Higher education - bachelor's degree 3 - Higher education - degree 4 - Higher education - master's 5 - Higher education - doctorate 6 - Frequency of higher education 9 - 12th year of schooling - not completed 10 - 11th year of schooling - not completed 12 - Other - 11th year of schooling 14 - 10th year of schooling 15 - 10th year of schooling - not completed 19 - Basic education 3rd cycle (9th/10th/11th year) or equiv. 38 - Basic education 2nd cycle (6th/7th/8th year) or equiv. 39 - Technological specialization course 40 - Higher education - degree (1st cycle) 42 - Professional higher technical course 43 - Higher education - master (2nd cycle);;no|Previous qualification (grade);Feature;Continuous;;Grade of previous qualification (between 0 and 200);;no|Nacionality;Feature;Integer;Nationality;1 - Portuguese; 2 - German; 6 - Spanish; 11 - Italian; 13 - Dutch; 14 - English; 17 - Lithuanian; 21 - Angolan; 22 - Cape Verdean; 24 - Guinean; 25 - Mozambican; 26 - Santomean; 32 - Turkish; 41 - Brazilian; 62 - Romanian; 100 - Moldova (Republic of); 101 - Mexican; 103 - Ukrainian; 105 - Russian; 108 - Cuban; 109 - Colombian;;no|Mother's qualification;Feature;Integer;Education Level;1 - Secondary Education - 12th Year of Schooling or Eq. 2 - Higher Education - Bachelor's Degree 3 - Higher Education - Degree 4 - Higher Education - Master's 5 - Higher Education - Doctorate 6 - Frequency of Higher Education 9 - 12th Year of Schooling - Not Completed 10 - 11th Year of Schooling - Not Completed 11 - 7th Year (Old) 12 - Other - 11th Year of Schooling 14 - 10th Year of Schooling 18 - General commerce course 19 - Basic Education 3rd Cycle (9th/10th/11th Year) or Equiv. 22 - Technical-professional course 26 - 7th year of schooling 27 - 2nd cycle of the general high school course 29 - 9th Year of Schooling - Not Completed 30 - 8th year of schooling 34 - Unknown 35 - Can't read or write 36 - Can read without having a 4th year of schooling 37 - Basic education 1st cycle (4th/5th year) or equiv. 38 - Basic Education 2nd Cycle (6th/7th/8th Year) or Equiv. 39 - Technological specialization course 40 - Higher education - degree (1st cycle) 41 - Specialized higher studies course 42 - Professional higher technical course 43 - Higher Education - Master (2nd cycle) 44 - Higher Education - Doctorate (3rd cycle);;no|Father's qualification;Feature;Integer;Education Level;1 - Secondary Education - 12th Year of Schooling or Eq. 2 - Higher Education - Bachelor's Degree 3 - Higher Education - Degree 4 - Higher Education - Master's 5 - Higher Education - Doctorate 6 - Frequency of Higher Education 9 - 12th Year of Schooling - Not Completed 10 - 11th Year of Schooling - Not Completed 11 - 7th Year (Old) 12 - Other - 11th Year of Schooling 13 - 2nd year complementary high school course 14 - 10th Year of Schooling 18 - General commerce course 19 - Basic Education 3rd Cycle (9th/10th/11th Year) or Equiv. 20 - Complementary High School Course 22 - Technical-professional course 25 - Complementary High School Course - not concluded 26 - 7th year of schooling 27 - 2nd cycle of the general high school course 29 - 9th Year of Schooling - Not Completed 30 - 8th year of schooling 31 - General Course of Administration and Commerce 33 - Supplementary Accounting and Administration 34 - Unknown 35 - Can't read or write 36 - Can read without having a 4th year of schooling 37 - Basic education 1st cycle (4th/5th year) or equiv. 38 - Basic Education 2nd Cycle (6th/7th/8th Year) or Equiv. 39 - Technological specialization course 40 - Higher education - degree (1st cycle) 41 - Specialized higher studies course 42 - Professional higher technical course 43 - Higher Education - Master (2nd cycle) 44 - Higher Education - Doctorate (3rd cycle);;no|Mother's occupation;Feature;Integer;Occupation;0 - Student 1 - Representatives of the Legislative Power and Executive Bodies, Directors, Directors and Executive Managers 2 - Specialists in Intellectual and Scientific Activities 3 - Intermediate Level Technicians and Professions 4 - Administrative staff 5 - Personal Services, Security and Safety Workers and Sellers 6 - Farmers and Skilled Workers in Agriculture, Fisheries and Forestry 7 - Skilled Workers in Industry, Construction and Craftsmen 8 - Installation and Machine Operators and Assembly Workers 9 - Unskilled Workers 10 - Armed Forces Professions 90 - Other Situation 99 - (blank) 122 - Health professionals 123 - teachers 125 - Specialists in information and communication technologies (ICT) 131 - Intermediate level science and engineering technicians and professions 132 - Technicians and professionals, of intermediate level of health 134 - Intermediate level technicians from legal, social, sports, cultural and similar services 141 - Office workers, secretaries in general and data processing operators 143 - Data, accounting, statistical, financial services and registry-related operators 144 - Other administrative support staff 151 - personal service workers 152 - sellers 153 - Personal care workers and the like 171 - Skilled construction workers and the like, except electricians 173 - Skilled workers in printing, precision instrument manufacturing, jewelers, artisans and the like 175 - Workers in food processing, woodworking, clothing and other industries and crafts 191 - cleaning workers 192 - Unskilled workers in agriculture, animal production, fisheries and forestry 193 - Unskilled workers in extractive industry, construction, manufacturing and transport 194 - Meal preparation assistants;;no|Father's occupation;Feature;Integer;Occupation;0 - Student 1 - Representatives of the Legislative Power and Executive Bodies, Directors, Directors and Executive Managers 2 - Specialists in Intellectual and Scientific Activities 3 - Intermediate Level Technicians and Professions 4 - Administrative staff 5 - Personal Services, Security and Safety Workers and Sellers 6 - Farmers and Skilled Workers in Agriculture, Fisheries and Forestry 7 - Skilled Workers in Industry, Construction and Craftsmen 8 - Installation and Machine Operators and Assembly Workers 9 - Unskilled Workers 10 - Armed Forces Professions 90 - Other Situation 99 - (blank) 101 - Armed Forces Officers 102 - Armed Forces Sergeants 103 - Other Armed Forces personnel 112 - Directors of administrative and commercial services 114 - Hotel, catering, trade and other services directors 121 - Specialists in the physical sciences, mathematics, engineering and related techniques 122 - Health professionals 123 - teachers 124 - Specialists in finance, accounting, administrative organization, public and commercial relations 131 - Intermediate level science and engineering technicians and professions 132 - Technicians and professionals, of intermediate level of health 134 - Intermediate level technicians from legal, social, sports, cultural and similar services 135 - Information and communication technology technicians 141 - Office workers, secretaries in general and data processing operators 143 - Data, accounting, statistical, financial services and registry-related operators 144 - Other administrative support staff 151 - personal service workers 152 - sellers 153 - Personal care workers and the like 154 - Protection and security services personnel 161 - Market-oriented farmers and skilled agricultural and animal production workers 163 - Farmers, livestock keepers, fishermen, hunters and gatherers, subsistence 171 - Skilled construction workers and the like, except electricians 172 - Skilled workers in metallurgy, metalworking and similar 174 - Skilled workers in electricity and electronics 175 - Workers in food processing, woodworking, clothing and other industries and crafts 181 - Fixed plant and machine operators 182 - assembly workers 183 - Vehicle drivers and mobile equipment operators 192 - Unskilled workers in agriculture, animal production, fisheries and forestry 193 - Unskilled workers in extractive industry, construction, manufacturing and transport 194 - Meal preparation assistants 195 - Street vendors (except food) and street service providers;;no|Admission grade;Feature;Continuous;;Admission grade (between 0 and 200);;no|Displaced;Feature;Integer;;1 â€“ yes 0 â€“ no;;no|Educational special needs;Feature;Integer;;1 â€“ yes 0 â€“ no;;no|Debtor;Feature;Integer;;1 â€“ yes 0 â€“ no;;no|Tuition fees up to date;Feature;Integer;;1 â€“ yes 0 â€“ no;;no|Gender;Feature;Integer;Gender;1 â€“ male 0 â€“ female;;no|Scholarship holder;Feature;Integer;;1 â€“ yes 0 â€“ no;;no|Age at enrollment;Feature;Integer;Age;Age of studend at enrollment;;no|International;Feature;Integer;;1 â€“ yes 0 â€“ no;;no|Curricular units 1st sem (credited);Feature;Integer;;Number of curricular units credited in the 1st semester;;no|Curricular units 1st sem (enrolled);Feature;Integer;;Number of curricular units enrolled in the 1st semester;;no|Curricular units 1st sem (evaluations);Feature;Integer;;Number of evaluations to curricular units in the 1st semester;;no|Curricular units 1st sem (approved);Feature;Integer;;Number of curricular units approved in the 1st semester;;no|Curricular units 1st sem (grade);Feature;Integer;;Grade average in the 1st semester (between 0 and 20);;no|Curricular units 1st sem (without evaluations);Feature;Integer;;Number of curricular units without evalutions in the 1st semester;;no|Curricular units 2nd sem (credited);Feature;Integer;;Number of curricular units credited in the 2nd semester;;no|Curricular units 2nd sem (enrolled);Feature;Integer;;Number of curricular units enrolled in the 2nd semester;;no|Curricular units 2nd sem (evaluations);Feature;Integer;;Number of evaluations to curricular units in the 2nd semester;;no|Curricular units 2nd sem (approved);Feature;Integer;;Number of curricular units approved in the 2nd semester;;no|Curricular units 2nd sem (grade);Feature;Integer;;Grade average in the 2nd semester (between 0 and 20);;no|Curricular units 2nd sem (without evaluations);Feature;Integer;;Number of curricular units without evalutions in the 1st semester;;no|Unemployment rate;Feature;Continuous;;Unemployment rate (%);;no|Inflation rate;Feature;Continuous;;Inflation rate (%);;no|GDP;Feature;Continuous;;GDP;;no|Target;Target;Categorical;;Target. The problem is formulated as a three category classification task (dropout, enrolled, and graduate) at the end of the normal duration of the course;;no",,"Valentim Realinho
+vrealinho@
+Instituto PolitÃ©cnico de Portalegre
+MÃ³nica Vieira Martins
+mvmartins@ipportalegre.pt
+Instituto PolitÃ©cnico de Portalegre
+Jorge Machado
+jmachado@ipportalegre.pt
+Instituto PolitÃ©cnico de Portalegre
+LuÃ­s Baptista
+lmtb@ipportalegre.pt
+Instituto PolitÃ©cnico de Portalegre",10.24432/C5MC89 Link: https://doi.org/10.24432/C5MC89,"This dataset is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) license.
+This allows for the sharing and adaptation of the datasets for any purpose, provided that the appropriate credit is given.",,Academic performance,1 citations,134067 views

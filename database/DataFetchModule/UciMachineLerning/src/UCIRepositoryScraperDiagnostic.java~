@@ -1,0 +1,19 @@
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
+
+public class UCIRepositoryScraperDiagnostic {
+
+    private static final String BASE_URL = "https://archive.ics.uci.edu/dataset/53/iris";
+
+    public static void main(String[] args) {
+        try {
+            Document doc = Jsoup.connect(BASE_URL).get();
+            System.out.println("HTML Content:");
+            System.out.println(doc.html());
+        } catch (IOException e) {
+            System.err.println("Error connecting to the website: " + e.getMessage());
+        }
+    }
+}
