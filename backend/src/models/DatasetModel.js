@@ -1,11 +1,30 @@
+// models/DatasetModel.js
 const mongoose = require('mongoose');
 
 const datasetSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    description: { type: String, required: true },
-    tags: { type: [String], required: true },
-    // Add other fields as necessary
+    UCIrepoId: Number,
+    Timestamp: String,
+    Name: String,
+    DonatedDate: String,
+    AbstractInfo: String,
+    DatasetCharacteristics: String,
+    SubjectArea: String,
+    AssociatedTasks: String,
+    FeatureType: String,
+    Instances: Number,
+    Features: Number,
+    DatasetInformation: String,
+    HasMissingValues: String,
+    IntroductoryPapers: String,
+    VariablesTable: String,
+    Creators: String,
+    DOI: String,
+    License: String,
+    Keywords: String,
+    Citations: String,
+    Views: String,
+    // Add any other fields you expect in your documents
 });
 
-const DatasetModel = mongoose.model('Dataset', datasetSchema);
+const DatasetModel = mongoose.model('metadata001', datasetSchema);
 module.exports = DatasetModel;
