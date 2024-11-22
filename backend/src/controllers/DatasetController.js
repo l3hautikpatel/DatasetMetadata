@@ -24,8 +24,8 @@ exports.getDataById = async (req, res) => {
     
     try {
         // Find the dataset by UCIRepoId
-        const dataset = await DatasetModel.findOne({ UCIrepoId: 53 }); // Change this line to findOne
-        console.log(DatasetModel.findOne({"UCIrepoId": 53}));
+        const dataset = await DatasetModel.findOne({ UCIrepoId:id }); // Change this line to findOne
+        console.log(DatasetModel.findOne({"UCIrepoId": id}));
         if (!dataset) {
             return res.status(404).json({ message: 'Dataset not found' });
         }
