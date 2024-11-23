@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+
 function RepoMetadataComp(props) {
     const { id } = props; // Get the dataset ID from props
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -20,58 +22,59 @@ function RepoMetadataComp(props) {
         };
         fetchData();
     }, [id]);
+
     if (loading) return <div className="text-white">Loading...</div>;
     if (error) return <div className="text-red-500">{error}</div>;
+
+    const renderField = (label, value) => {
+        if (value && value !== "NOT AVAILABLE") {
+            return (
+                <div className="p-1">
+                    <h2 className="text-sm font-semibold text-white">{label}:</h2>
+                    <p className="text-gray-300 text-xs">{value}</p>
+                </div>
+            );
+        }
+        return null;
+    };
+
     return (
-        <div className="bg-gray-800 p-6 mt-10 rounded-lg shadow-lg">
-            <h1 className="text-2xl font-bold text-white">{data.Name}</h1>
-            <p className="text-gray-300 mt-2">{data.AbstractInfo}</p>
-            <div className="mt-4">
-                <h2 className="text-lg font-semibold text-white">Dataset Characteristics:</h2>
-                <p className="text-gray-300">{data.DatasetCharacteristics}</p>
-            </div>
-            <div className="mt-4">
-                <h2 className="text-lg font-semibold text-white">Subject Area:</h2>
-                <p className="text-gray-300">{data.SubjectArea}</p>
-            </div>
-            <div className="mt-4">
-                <h2 className="text-lg font-semibold text-white">Associated Tasks:</h2>
-                <p className="text-gray-300">{data.AssociatedTasks}</p>
-            </div>
-            <div className="mt-4">
-                <h2 className="text-lg font-semibold text-white">Instances:</h2>
-                <p className="text-gray-300">{data.Instances}</p>
-            </div>
-            <div className="mt-4">
-                <h2 className="text-lg font-semibold text-white">Features:</h2>
-                <p className="text-gray-300">{data.Features}</p>
-            </div>
-            <div className="mt-4">
-                <h2 className="text-lg font-semibold text-white">License:</h2>
-                <p className="text-gray-300">{data.License}</p>
-            </div>
-            <div className="mt-4">
-                <a
-                    href={`https://${data.DOI}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-500 hover:underline"
-                >   Redirect to DOI
-                </a>
-            </div>
-            <div className="mt-4">
-                <h2 className="text-lg font-semibold text-white">Citations:</h2>
-                <p className="text-gray-300">{data.Citations}</p>
-            </div>
-            <div className="mt-4">
-                <h2 className="text-lg font-semibold text-white">Views:</h2>
-                <p className="text-gray-300">{data.Views}</p>
-            </div>
-            <div className="mt-4">
-                <h2 className="text-lg font-semibold text-white">Creators:</h2>
-                <p className="text-gray-300">{data.Creators}</p>
+        <div className="bg-gray-800 p-4 mt-10 rounded-lg shadow-lg">
+            <h1 className="text-xl font-bold text-white">{data.Name}</h1>
+            <p className="text-gray-300 text-sm mt-1">{data.AbstractInfo}</p>
+            
+            <div className="grid grid-cols-4 gap-2 mt-4">
+                {renderField("Characteristics", data.DatasetCharacteristics)}
+                {renderField("Subject Area", data.SubjectArea)}
+                {renderField("Associated Tasks", data.AssociatedTasks)}
+                {renderField("Instances", data.Instances)}
+                {renderField("Features", data.Features)}
+                {renderField("Citations", data.Citations)}
+                {renderField("Views", data.Views)}
+                {renderField("Creators", data.Creators)}
+                
+                {data.License && data.License !== "NOT AVAILABLE" && (
+                    <div className="p-1 col-span-4">
+                        <h2 className="text-sm font-semibold text-white">License:</h2>
+                        <p className="text-gray-300 text-xs">{data.License}</p>
+                    </div>
+                )}
+
+                {data.DOI && data.DOI !== "NOT AVAILABLE" && (
+                    <div className="p-1 col-span-4">
+                        <a
+                            href={`https://${data.DOI}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-blue-500 text-xs hover:underline"
+                        >
+                            Redirect to Source Repo.
+                        </a>
+                    </div>
+                )}
             </div>
         </div>
     );
 }
+
 export default RepoMetadataComp;

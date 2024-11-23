@@ -17,7 +17,7 @@ function SearchBar({ searchString, setSearchString }) {
       setTimeout(() => {
         setSearchString(event.target.value); // Update the search string state after 3 seconds
         console.log("Searching for:", event.target.value); // Replace this with your API call
-      }, 3000) // Adjust the delay as needed (3000ms for 3 seconds)
+      }, 2000) // Adjust the delay as needed (3000ms for 3 seconds)
     );
   };
 

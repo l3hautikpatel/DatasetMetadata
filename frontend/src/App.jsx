@@ -32,10 +32,12 @@ function App() {
       <div className="mainComp bg-cyan-950 p-10 mt-40 mb-10 flex gap-3 w-screen rounded-xl overflow-hidden ">
         <div className="flex-[7]">
           <RepoMetadataComp id="45"/>
-          <RepoMetadataComp id="35"/>
+          <RepoMetadataComp id="75"/>
         </div>
         <div className="flex-[3]">
-          <RepoMetadataComp id="45" />
+          
+          
+
         </div>
       </div>
     </>
