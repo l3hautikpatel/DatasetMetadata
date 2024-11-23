@@ -4,7 +4,11 @@ const DatasetModel = require('../models/DatasetModel');
 let numberOfResults = 20;
 
 
-exports.processSearchQuery = async (query) => {
+exports.processSearchQuery = async (req) => {
+    const { query , date , name } = req.query; // Get the search string from the request
+    console.log(query + " : RECIEVED QUERY");
+    console.log(name);
+    console.log(date);
     try {
         // Split the query into individual words
         const searchWords = query.toLowerCase().split(/\s+/);

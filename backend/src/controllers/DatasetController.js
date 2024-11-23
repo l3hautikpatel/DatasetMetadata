@@ -3,12 +3,12 @@ const { processSearchQuery } = require('../utils/searchUtils');
 
 exports.searchDatasets = async (req, res) => {
     
-    const { query } = req.query; // Get the search string from the request
-    console.log(query + " : RECIEVED QUERY");
+
+    
     try {
         // Process the search query to get relevant UCIRepoIds
-        const ids = await processSearchQuery(query);
-        console.log(ids);
+        const ids = await processSearchQuery(req);
+        // console.log(ids);
 
         res.status(200).json(ids);
     } catch (error) {
