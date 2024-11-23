@@ -5,6 +5,7 @@ import "./App.css";
 import SearchBar from "./Components/SearchBar";
 import Filter from "./Components/Filter";
 import RepoMetadataComp from "./Components/RepoMetadataComp";
+import NavBar from "./Components/NavBar";
 
 function App() {
   const [searchString, setSearchString] = useState("");
@@ -14,20 +15,27 @@ function App() {
 
   return (
     <>
+
+      <NavBar />
       <SearchBar searchString={searchString} setSearchString={setSearchString} />
-      <h3>{searchString} + {year} + {type} + {views}</h3>
+      <h3 className="flex justify-center w-screen" >{searchString} + {year} + {type} + {views}</h3>
       {/* Pass props to Filter components */}
+
+      
+    <div className="flex justify-center w-screen">
       <Filter title="Year" options={["2022", "2021", "2020", "2019", "2018",""]} selectedOption={year} setSelectedOption={setYear} />
       <Filter title="Type" options={["Type1", "Type2", "Type3"]} selectedOption={type} setSelectedOption={setType} />
       <Filter title="Views" options={["View1", "View2", "View3"]} selectedOption={views} setSelectedOption={setViews} />
       
+      </div>
+
       <div className="mainComp bg-cyan-950 p-10 mt-40 mb-10 flex gap-3 w-screen rounded-xl overflow-hidden ">
         <div className="flex-[7]">
           <RepoMetadataComp id="45"/>
           <RepoMetadataComp id="35"/>
         </div>
         <div className="flex-[3]">
-          <RepoMetadataComp id="650" />
+          <RepoMetadataComp id="45" />
         </div>
       </div>
     </>

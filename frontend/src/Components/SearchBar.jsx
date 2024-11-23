@@ -33,7 +33,8 @@ function SearchBar({ searchString, setSearchString }) {
   }, [searchString]);
 
   return (
-    <form className="max-w-md mx-auto pb-4 pt-5" onSubmit={handleSubmit}>
+    <div className="flex justify-center w-screen">
+    <form className="max-w-md mx-auto pb-4 pt-5 w-screen" onSubmit={handleSubmit}>
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -75,6 +76,7 @@ function SearchBar({ searchString, setSearchString }) {
         </button>
       </div>
     </form>
+    </div>
   );
 }
 
