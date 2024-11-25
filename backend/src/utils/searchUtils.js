@@ -3,7 +3,7 @@ const DatasetModel = require('../models/DatasetModel');
 
 let numberOfResults = 20;
 
-
+//http://localhost:5000/api/datasets/search?query=searchString&source=Kaggle&votesMin=10&votesMax=100&downloadMin=1000&downloadMax=10000&missingValues=Yes&instancesMin=50&instancesMax=500&viewsMin=0&viewsMax=1000
 exports.processSearchQuery = async (req) => {
     const { query , date , name } = req.query; // Get the search string from the request
     console.log(query + " : RECIEVED QUERY");

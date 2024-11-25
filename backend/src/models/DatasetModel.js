@@ -28,5 +28,5 @@ const datasetSchema = new mongoose.Schema({
     SearchingWords: { type: [String], default: [] }, // Change to an array of strings
 }, { timestamps: true }); // Automatically add createdAt and updatedAt fields
 
-const DatasetModel = mongoose.model('metadata01', datasetSchema);
+const DatasetModel = mongoose.model('metapool_sets', datasetSchema);
 module.exports = DatasetModel;

@@ -9,6 +9,7 @@ function Filter({ title, options, selectedOption, setSelectedOption }) {
     setDropdownOpen(false); // Close dropdown after selection
   };
 
+  
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -54,7 +55,7 @@ function Filter({ title, options, selectedOption, setSelectedOption }) {
       {isDropdownOpen && ( // Render dropdown only if open
         <div
           id="dropdownMenu"
-          className="absolute z-10 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
+          className="absolute z-10 mt-2 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
           style={{ top: "100%", left: 0 }} // Position it directly below the button
         >
           <ul
