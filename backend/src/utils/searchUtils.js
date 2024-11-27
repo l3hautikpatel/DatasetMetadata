@@ -37,13 +37,16 @@ exports.processSearchQuery = async (req) => {
             }
         }
 
+        // Convert source to lowercase for case-insensitive checks
+        const normalizedSource = source ? source.toLowerCase() : null;
+
         // Source filter
-        if (source) {
-            searchCriteria.source = source;
+        if (normalizedSource) {
+            searchCriteria.source = { $regex: new RegExp(`^${normalizedSource}$`, 'i') };
         }
 
         // Kaggle-specific filters
-        if (source === 'Kaggle') {
+        if (normalizedSource === 'kaggle') {
             if (votesMin || votesMax) {
                 searchCriteria['kaggle_specific.total_votes'] = {};
                 if (votesMin) searchCriteria['kaggle_specific.total_votes'].$gte = parseInt(votesMin);
@@ -58,7 +61,7 @@ exports.processSearchQuery = async (req) => {
         }
 
         // UCI-specific filters
-        if (source === 'UCI') {
+        if (normalizedSource === 'uci') {
             if (instancesMin || instancesMax) {
                 searchCriteria['uci_specific.instances'] = {};
                 if (instancesMin) searchCriteria['uci_specific.instances'].$gte = parseInt(instancesMin);
